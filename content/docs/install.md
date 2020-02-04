@@ -28,35 +28,35 @@ Select the operating system your are developing on.
 
 <div id="os-macosx">
   <table class="bordered striped">
-    <tr><th>Type</th><th>Is Supported?</th></tr>
+    <tr><th class="w20">Type</th><th>Is Supported?</th></tr>
     <tr><td>IDE Support</td><td>Yes. <a href="https://macvim-dev.github.io/macvim/">Macvim</a> or <a href="https://code.visualstudio.com">Visual Studio Code</a></td></tr>
     <tr><td>Development</td><td>Yes</td></tr>
-    <tr><td class="w20">Production</td><td>No</td></tr>
+    <tr><td>Production</td><td>No</td></tr>
   </table>
 </div>
 
 <div id="os-linux">
   <table class="bordered striped">
+    <tr><th class="w20">Type</th><th>Is Supported?</th></tr>
     <tr><td>IDE Support</td><td>Yes. Vim ( out of the box ) or <a href="https://code.visualstudio.com">Visual Studio Code</a></td></tr>
-    <tr><th>Type</th><th>Is Supported?</th></tr>
     <tr><td>Development</td><td>Yes</td></tr>
-    <tr><td class="w20">Production</td><td>Yes</td></tr>
+    <tr><td>Production</td><td>Yes</td></tr>
   </table>
 </div>
 
 <div id="os-windows">
   <table class="bordered striped">
-    <tr><th>Type</th><th>Is Supported?</th></tr>
+    <tr><th class="w20">Type</th><th>Is Supported?</th></tr>
     <tr><td>IDE Support</td><td>Yes</td></tr>
     <tr><td>Development</td><td>Accepting contributions</td></tr>
-    <tr><td class="w20">Production</td><td>Accepting contributions</td></tr>
+    <tr><td>Production</td><td>Accepting contributions</td></tr>
   </table>
 </div>
 
 
-> ```bash
-> git clone https://github.com/wayfair-incubator/tremor-runtime.git
-> ```
+```bash
+git clone https://github.com/wayfair-incubator/tremor-runtime.git
+```
 
 <h3 class="section-head" id="h-ide"><a href="#h-ide"></a>Setup an IDE / editor</h3>
 <nav class="tabs" data-component="tabs">
@@ -80,7 +80,7 @@ Select the operating system your are developing on.
   lint engine.
 
 
-  > ```bash
+  > ```go
   > cd $HOME/.vim/bundle
   > git clone https://github.com/wayfair-tremor/tremor-vim.git
   > ```

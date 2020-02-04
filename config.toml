@@ -4,6 +4,13 @@ title = "Tremor"
 theme = "tremor"
 description = "Tremor is an early stage event processing system for unstructured data with rich support for structural pattern matching, filtering and transformation"
 Paginate = 6
+
+# pygmentsUseClassic            = false
+# pygmentsCodeFences            = true
+# pygmentsCodeFencesGuessSyntax = true
+# pygmentsUseClasses            = false
+# pygmentsStyle                 = "monokai"
+
 [Params]
   RSSLink = "/index.xml"
   author = "The Tremor Team" # add your company name
@@ -21,10 +28,18 @@ Paginate = 6
     url = "/faq/"
 
 [markup.goldmark.renderer]
-unsafe= true
+unsafe = true
 
-pygmentsUseClassic            = false
-pygmentsCodeFences            = true
-pygmentsCodeFencesGuessSyntax = true
-pygmentsUseClasses            = false
-pygmentsstyle = "monomai"
+
+
+[markup]
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ""
+    lineNoStart = 1
+    lineNos = true
+    lineNumbersInTable = true
+    noClasses = true
+    style = "monokai"
+    tabWidth = 4
