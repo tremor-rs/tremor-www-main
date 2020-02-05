@@ -2,7 +2,7 @@
 title = "Customizing Tremors Behaviour"
 date = "2020-02-05T13:11:00+01:00"
 draft = false
-weight = 101
+weight = 200
 description = "Scripting"
 bref= "Tremor's behaviour is scriptable to allow making the most out of the engine"
 toc= true
