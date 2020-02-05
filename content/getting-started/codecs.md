@@ -40,12 +40,12 @@ Tremor supports en and decoding the following structured wire formats:
 
 In addition the [string](https://docs.tremor.rs/artefacts/codecs#string) codec is supported for any unstructured, valid UTF8, string.
 
-<h3 class="section-head" id="h-concept"><a href="#h-codecs"></a>Pre and Postprocessors</h3>
+<h3 class="section-head" id="h-concept"><a href="#h-codecs"></a>Pre- and Postprocessors</h3>
 
 As preprocessors tremor supports:
 
 * [lines](https://docs.tremor.rs/artefacts/preprocessors/#lines) - split by newline
-* [lines-null](https://docs.tremor.rs/artefacts/preprocessors/#lines-null) - split by null byte 
+* [lines-null](https://docs.tremor.rs/artefacts/preprocessors/#lines-null) - split by null byte
 * [lines-pipe](https://docs.tremor.rs/artefacts/preprocessors/#lines-pipe) - split by `|`
 * [base64](https://docs.tremor.rs/artefacts/preprocessors/#base64) - base64 decoding
 * [decompress](https://docs.tremor.rs/artefacts/preprocessors/#decompress) - auto detecting decompress

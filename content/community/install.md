@@ -8,7 +8,7 @@ bref= "Notes about tremor installation for developers"
 toc= true
 +++
 
-#<h3 class="section-head" id="h-platforms"><a href="#h-platforms"></a>Supported Platforms</h3>
+<h3 class="section-head" id="h-platforms"><a href="#h-platforms"></a>Supported Platforms</h3>
 
 Select the operating system your are developing on.
 
@@ -53,9 +53,8 @@ Select the operating system your are developing on.
   </table>
 </div>
 
-
 ```bash
-git clone https://github.com/wayfair-incubator/tremor-runtime.git
+git clone https://github.com/wayfair-tremor/tremor-runtime.git
 ```
 
 <h3 class="section-head" id="h-ide"><a href="#h-ide"></a>Setup an IDE / editor</h3>
@@ -75,12 +74,12 @@ git clone https://github.com/wayfair-incubator/tremor-runtime.git
 
 
 <div id="ide-vim">
-  Follow the instructions in the <a href="https://github.com/wayfair-incubator/tremor-vim">tremor-vim</a> git repository, and
+  Follow the instructions in the <a href="https://github.com/wayfair-tremor/tremor-vim">tremor-vim</a> git repository, and
   ensure your `.vimrc` is updated and that you have the <a href="https://github.com/dense-analysis/ale">vim ALE</a> asynchronous
   lint engine.
 
 
-  > ```go
+  > ```bash
   > cd $HOME/.vim/bundle
   > git clone https://github.com/wayfair-tremor/tremor-vim.git
   > ```
@@ -88,7 +87,7 @@ git clone https://github.com/wayfair-incubator/tremor-runtime.git
 </div>
 
 <div id="ide-vscode">
-  Follow the instructions in the <a href="https://github.com/wayfair-incubator/tremor-vscode">tremor-vscode</a> git repository.
+  Follow the instructions in the <a href="https://github.com/wayfair-tremor/tremor-vscode">tremor-vscode</a> git repository.
 </div>
 
 <div id="ide-other">
@@ -101,7 +100,7 @@ git clone https://github.com/wayfair-incubator/tremor-runtime.git
 
   > ```bash
   > cd $HOME/git
-  > git clone https://github.com/wayfair-incubator/tremor-language-server.git
+  > git clone https://github.com/wayfair-tremor/tremor-language-server.git
   > cd tremor-language-server
   > cargo build --release
   > export PATH=`pwd`/target/release/tremor-language-server:$PATH
@@ -111,7 +110,7 @@ git clone https://github.com/wayfair-incubator/tremor-runtime.git
 
   > ```bash
   > cd $HOME/git
-  > git clone https://github.com/wayfair-incubator/tremor-runtime.git
+  > git clone https://github.com/wayfair-tremor/tremor-runtime.git
   > cd tremor-runtime
-  > cargo build --release # go get a nice cup of tea
+  > cargo build --release --all # go get a nice cup of tea
   > ```
