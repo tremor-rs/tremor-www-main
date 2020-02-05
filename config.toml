@@ -19,13 +19,22 @@ Paginate = 6
   email = "#"
 
 [[menu.main]]
-    name = "Documentation"
-    weight = -100
-    url = "/docs/"
-[[menu.main]]
     name = "Faq"
-    weight = -100
+    weight = -400
     url = "/faq/"
+[[menu.main]]
+    name = "Getting Started"
+    weight = -300
+    url = "/getting-started/"
+[[menu.main]]
+    name = "Community"
+    weight = -200
+    url = "/community/"
+[[menu.main]]
+    name = "Governance"
+    weight = -100
+    url = "/governance/"
+
 
 [markup.goldmark.renderer]
 unsafe = true
@@ -38,8 +47,8 @@ unsafe = true
     guessSyntax = false
     hl_Lines = ""
     lineNoStart = 1
-    lineNos = true
+    lineNos = false
     lineNumbersInTable = true
-    noClasses = true
-    style = "monokai"
+    noClasses = false
+    style = "dracula"
     tabWidth = 4

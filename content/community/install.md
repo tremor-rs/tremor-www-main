@@ -2,13 +2,13 @@
 title = "Quick Developer Install"
 date = "2020-02-04T14:01:00+01:00"
 draft = false
-weight = 100
+weight = 1000
 description = "Install"
 bref= "Notes about tremor installation for developers"
 toc= true
 +++
 
-<h3 class="section-head" id="h-platforms"><a href="#h-platforms"></a>Supported Platforms</h3>
+#<h3 class="section-head" id="h-platforms"><a href="#h-platforms"></a>Supported Platforms</h3>
 
 Select the operating system your are developing on.
 
@@ -115,4 +115,3 @@ git clone https://github.com/wayfair-incubator/tremor-runtime.git
   > cd tremor-runtime
   > cargo build --release # go get a nice cup of tea
   > ```
-
