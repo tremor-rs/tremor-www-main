@@ -14,17 +14,17 @@ The tremor project's high level governance model is designed around the requirem
 practices of the CNCF / Linux Foundation Core Infrastructure Initiative best practice targeting
 a silver badge status.
 
-[CNCF CII Best Practices](https://bestpractices.coreinfrastructure.org/en)
-[CNCF](https://bestpractices.coreinfrastructure.org/en)
-[Linux Foundation](https://www.linuxfoundation.org)
+* [CNCF CII Best Practices](https://bestpractices.coreinfrastructure.org/en)
+* [CNCF](https://www.cncf.io)
+* [Linux Foundation](https://www.linuxfoundation.org)
 
 ## Project model
 
 The tremor project / product management model is designed around the linux kernel development
 practices and processes.
 
-[Linux Kernel CII best practice](https://bestpractices.coreinfrastructure.org/en/projects/34)
-[Linux Kernel organization](https://www.kernel.org)
+* [Linux Kernel CII best practice](https://bestpractices.coreinfrastructure.org/en/projects/34)
+* [Linux Kernel organization](https://www.kernel.org)
 
 ## Community model
 
@@ -32,6 +32,6 @@ The tremor project has adopted the Rust community model and practices for engagi
 and ensuring that all tremor contributors and stakeholders respect the code of conduct at all
 times.
 
-[Rust Language Organization](https://www.rust-lang.org)
-[Rust Community Standards](https://www.rust-lang.org/community)
+* [Rust Language Organization](https://www.rust-lang.org)
+* [Rust Community Standards](https://www.rust-lang.org/community)
 
