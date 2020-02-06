@@ -8,7 +8,7 @@ bref= "De- and encode data from wire formats"
 toc= true
 +++
 
-<h3 class="section-head" id="h-concept"><a href="#h-concept"></a>Concept</h3>
+### Concept
 
 At the edges of On- and Offraps tremor uses codecs to transform the wire format into a structured form that tremor can understand. This structured format loosely follows the restrictions of JSON with additional restrictions based on different codes.
 
@@ -16,7 +16,7 @@ Codes share some comcepts with [extractors](https://docs.tremor.rs/tremor-script
 
 In addition to codecs, that work on structured data, pre and postprocessors allow dealing with binary data streas as an interface between the ramp and the codec. Preprocessors are executed on the binary data the onramp recives prior to being handed to a codec. Postprocessors are executed after the data leaves the codec and before they'the data is send out of the offramp. 
 
-<h3 class="section-head" id="h-concept"><a href="#h-concept"></a>Data Format</h3>
+### Data Format
 
 As in internal representation we follow a JSONesque structure. The value types boil down to:
 
@@ -27,7 +27,7 @@ As in internal representation we follow a JSONesque structure. The value types b
 * Array
 * Record (string keys)
 
-<h3 class="section-head" id="h-concept"><a href="#h-codecs"></a>Codecs</h3>
+### Codecs
 
 Tremor supports en and decoding the following structured wire formats:
 

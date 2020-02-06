@@ -8,7 +8,7 @@ bref= "Tooling is a first class concear for tremor"
 toc= true
 +++
 
-<h3 class="section-head" id="h-concept"><a href="#h-concept"></a>IDE Integration</h3>
+### IDE Integration
 
 ![tremor-vim](/img/tremor-vim.png)
 
@@ -20,7 +20,7 @@ The VS Code extension is available on the [Visual Studio Marketplace](https://ma
 
 The VIM plugin can be [installed from GitHub](https://github.com/wayfair-tremor/tremor-vim).
 
-<h3 class="section-head" id="h-concept"><a href="#h-concept"></a>Informative Errors</h3>
+### Informative Errors
 
 ![tremor-vim](/img/error.png)
 

@@ -8,7 +8,7 @@ bref= "Connecting different systems is an integral part of tremor."
 toc= true
 +++
 
-<h3 class="section-head" id="h-concept"><a href="#h-concept"></a>Concept</h3>
+### Concept
 
 Connecting to other systems is essential part or tremors use. We implemented those connectors in two parts, [Onramps](#h-onramps) and [Offramps](#h-oframps).
 
@@ -16,7 +16,7 @@ As the name suggests [Onramps](#h-onramps) are used to ingest data into tremor, 
 
 In contrast [Offramps](#h-oframps) are used by tremor to send data it processed to, and where possible to provide a metric on the pressure of upstream systems.
 
-<h3 class="section-head" id="h-onramps"><a href="#h-onramps"></a>Onramps</h3>
+### Onramps
 
 Currently tremor supports the following general purpose Onramps:
 
@@ -36,7 +36,7 @@ Currently the following Onramps are in active development and provided as a 'alp
 
 * [REST](https://docs.tremor.rs/artefacts/onramps/#REST)
 
-<h3 class="section-head" id="h-oframps"><a href="#h-oframps"></a>Offramps</h3>
+### Offramps
 
 Currently tremor supports the following general purpose Offramps:
 

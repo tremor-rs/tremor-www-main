@@ -9,11 +9,11 @@ toc= true
 
 +++
 
-<h3 class="section-head" id="h-concept"><a href="#h-concept"></a>Concept</h3>
+### Concept
 
 At the core of tremors pipeline are two scripting languages. Tremor Script, a ETL focused language that optimises on extraction, transformation and inspection of events and Tremor Query, a SQL-like language build round tremor script to describe the graphs that form tremor pipelines.
 
-<h3 class="section-head" id="h-script"><a href="#h-script"></a>Tremor Script</h3>
+### Tremor Script
 
 The tremor script language is build to effectively and intuitively inspect events, extract required information from them, and transform them. It is the main facility business logic in tremor is build and replaces most of the 'chain of operator' model commonly found in other platforms with a more flexible and easier to extend meachanism.
 
@@ -36,7 +36,7 @@ end;
 
 The full documentation  [of the language](https://docs.tremor.rs/tremor-script) and its [standard library](https://docs.tremor.rs/tremor-script/functions) can be found in the [docs](https://docs.tremor.rs).
 
-<h3 class="section-head" id="h-query"><a href="#h-query"></a>Tremor Query</h3>
+### Tremor Query
 
 Tremor query builds around [Tremor Script](#h-script) and extends tremors capability to not only define scripts but turn pipeline configuration into development rather then YAML wrestling. In addition to describing pipelines Tremor Query adds the ability to group and aggregate events.
 
@@ -79,7 +79,6 @@ pipeline:
       in: [runtime]
       runtime: [out]
 ```
-
 
 </div>
 
