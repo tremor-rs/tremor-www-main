@@ -1,25 +1,63 @@
 +++
-title = "Customizing Tremors Behaviour"
+title = "Tremor Applications"
 date = "2020-02-05T13:11:00+01:00"
 draft = false
 weight = 200
 description = "Scripting"
-bref= "Tremor's behaviour is scriptable to allow making the most out of the engine"
+bref= "Tremor's application logic is scriptable"
 toc= true
 
 +++
 
 ### Concept
 
-At the core of tremors pipeline are two scripting languages. Tremor Script, a ETL focused language that optimises on extraction, transformation and inspection of events and Tremor Query, a SQL-like language build round tremor script to describe the graphs that form tremor pipelines.
+Tremor supports data processing through a directed acyclic graph based pipeline or
+workflow. Pipelines can be configured via a YAML syntax or via a structured query
+language.
+
+Pipelines are a graph of operations through which events are routed depth first.
+Operations in tremor pipelines are pluggable and extensible.
+
+For applications or algorithms that process one event at a time, such as data cleansing,
+enrichment, normalization, validation and transformation an ETL focused scripting language
+can be used to program the application logic.
+
+Qualities of service such as batching, bucketing and flushing semantics can be configured
+into pipelines and data shared between oeprators through metadata exposed to the scripting
+language.
+
+The tremor query language replaces the YAML pipeline format with a more intuitive and easier
+to program SQL-like language. The query language adds support for processing windows of events
+over time to support near real-time grouping and aggregation.
+
+For applications or algorithms that process events over time, such as those calculating summary
+statistics, aggregating or projecting alternate views or other complex data processing and
+routing logic the tremor query language is a better fit.
+
+The query language embeds the scripting language allowing data-flow or query-oriented logic
+to co-exist with ETL oriented logic.
+
+Both the query and scripting language are evolving as tremor is applied to broader production
+use cases.
 
 ### Tremor Script
 
-The tremor script language is build to effectively and intuitively inspect events, extract required information from them, and transform them. It is the main facility business logic in tremor is build and replaces most of the 'chain of operator' model commonly found in other platforms with a more flexible and easier to extend meachanism.
+The scripting language supports JSON-like values. A valid JSON value is a valid tremor-script value.
 
-[Structural pattern matching](https://docs.tremor.rs/tremor-script/#match) makes it extremely powerful when  interacting with structured data like JSON, Influx Line protocl, or any protocol that can be represented in a JSONeque structured fashion.
+Tremor-script adds an expression language that supports unary, binary, comparison and predicate
+operations with higher level expressions supporting `match` expressions, `for` comprehensions and
+`patch` and `merge` expressions.
 
-On the other hand [extractors](https://docs.tremor.rs/tremor-script/#extractors) allow to quickly turn unstrucuted data in structured data and extract important infrmation from string like fields without having to write a line of rust code.
+Features relatively unique to tremor-script are structural pattern matching and the recognition
+of and ability to extract data from microformats typically embedded in event data.
+
+[Structural pattern matching](https://docs.tremor.rs/tremor-script/#match) allows patterns over
+arbitrarily nested values to be concisely declared with an intuitive syntax.
+
+[Micro-format Extractors](https://docs.tremor.rs/tremor-script/#extractors) allows embedded data
+conforming to orthogonal formats such as regular expressions in Strings, date/time variants to
+be conditionally transformed to tremor internal form and for embedded data to be extracted upon
+matching.
 
 ```tremor
 define script extract                                # define the script that parses our apache logs

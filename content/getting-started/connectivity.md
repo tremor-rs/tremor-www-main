@@ -10,46 +10,61 @@ toc= true
 
 ### Concept
 
-Connecting to other systems is essential part or tremors use. We implemented those connectors in two parts, [Onramps](#h-onramps) and [Offramps](#h-oframps).
+In order to provide a general purpose event processing facility to a broad base
+of applications, tremor separates processing from connectivity and distribution.
 
-As the name suggests [Onramps](#h-onramps) are used to ingest data into tremor, either by actively retreiving it (for example by reading from Kafka) or by passively providing an endpoint for data to be send to (for example with a websocket Onramp).
+Tremor further separates the syntax of external formats from the implied value type
+semantics that are useful for filtering, processing, transforming, aggregating or
+otherwise deriving synthetic events from streams of data ingested by tremor processes.
 
-In contrast [Offramps](#h-oframps) are used by tremor to send data it processed to, and where possible to provide a metric on the pressure of upstream systems.
+As tremor is primarily an event processing system we refer to connections to external
+systems that are logically upstream of tremor as `Onramps` (#h-onramps). We refer to connections
+to external systems that are logically downstream of tremor as `Offramps`(#h-offramps).
+
+For example; the Kafka onramp subscribes to topics in a Kafka cluster and consumes event data
+from those topics; the Kafka offramp publishes to topics in a Kafka cluster and contributes
+event data to topics.
+
+Application logic in tremor can be connected to multiple onramps and/or offramps originating from
+or contributing to disparate systems. A simple passthrough application could enable bridging a
+Kafka system with websockets. It could preserve or transform the external wire-form. It could
+filter and partition event data using content based routing.
+
+The application logic is always based on tremor internal representation of the data, never on
+the external wire-format. This is by design.
+
+Tremor has built-in support for metrics capture of data ingested and distributed ( metrics ) and
+also for communicating back-pressure events to application logic so that quality-of-service can
+be tuned adaptively.
 
 ### Onramps
 
-Currently tremor supports the following general purpose Onramps:
+Tremor supports a number of stable general purpose onramps:
 
 * [Kafka](https://docs.tremor.rs/artefacts/onramps/#kafka)
 * [TCP](https://docs.tremor.rs/artefacts/onramps/#TCP)
 * [UDP](https://docs.tremor.rs/artefacts/onramps/#udp)
 * [WS](https://docs.tremor.rs/artefacts/onramps/#WS)
-
-In addition the following special purpose Onramps are provided:
-
 * [File](https://docs.tremor.rs/artefacts/onramps/#File) - reads a singular file
 * [Metronome](https://docs.tremor.rs/artefacts/onramps/#metronome) - periodic tick events
-* [Crononome](https://docs.tremor.rs/artefacts/onramps/#crononome) - crom based tick events
+* [Crononome](https://docs.tremor.rs/artefacts/onramps/#crononome) - cron based tick events
 * [Blaster](https://docs.tremor.rs/artefacts/onramps/#blaster) - Benchmarking onramp
 
-Currently the following Onramps are in active development and provided as a 'alpha' version:
+And some early-access evolving production-grade onramps:
 
 * [REST](https://docs.tremor.rs/artefacts/onramps/#REST)
 
 ### Offramps
 
-Currently tremor supports the following general purpose Offramps:
+Tremor supports a numbre of stable general purpose offramps:
 
 * [File](https://docs.tremor.rs/artefacts/offramps/#File)
 * [Kafka](https://docs.tremor.rs/artefacts/offramps/#Kafka)
 * [REST](https://docs.tremor.rs/artefacts/offramps/#REST)
-* [stdout](https://docs.tremor.rs/artefacts/offramps/#stdout)
 * [TCP](https://docs.tremor.rs/artefacts/offramps/#TCP)
 * [UDP](https://docs.tremor.rs/artefacts/offramps/#UDP)
 * [WS](https://docs.tremor.rs/artefacts/offramps/#WS)
-
-In addition the following special purpose Offramps are provided:
-
-* [blackhole](https://docs.tremor.rs/artefacts/offramps/#REST) - benchmarking offramp
-* [debug](https://docs.tremor.rs/artefacts/offramps/#REST) - benchmarking offramp
-* [elastic](https://docs.tremor.rs/artefacts/offramps/#elastic) - elastic search offramps
+* [BlackHole](https://docs.tremor.rs/artefacts/offramps/#REST) - benchmarking offramp
+* [elastic](https://docs.tremor.rs/artefacts/offramps/#elastic) - ElasticSearch client
+* [debug](https://docs.tremor.rs/artefacts/offramps/#REST) - tremor internal use for debugging
+* [stdout](https://docs.tremor.rs/artefacts/offramps/#stdout)
