@@ -61,3 +61,13 @@ Operators, On and Offramps, Codecs, Functions, and Aggregates
 * Anup Dhamala
 * Darach Ennis
 * Heinz Gies
+
+### API (api)
+
+API's and endpoints
+
+#### Members
+
+* Anup Dhamala
+* Darach Ennis
+* Heinz Gies
