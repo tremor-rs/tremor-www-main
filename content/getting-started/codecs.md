@@ -33,7 +33,6 @@ Codecs share similar concepts to [extractors](https://docs.tremor.rs/tremor-scri
 application. Codecs are applied to external data as they are ingested by or egressed from a running tremor process.
 Extractors, on the other hand, are tremor internal and convert data from and to tremor's internal value type.
 
-
 ### Data Format
 
 Tremor's internal data representation is JSON-like. The supported value types are:
