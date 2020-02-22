@@ -6,6 +6,7 @@ lint engine.<pre>
   git clone https://github.com/wayfair-tremor/tremor-vim.git
   </pre><p></pre></p></div><div id=ide-vscode>Follow the instructions in the <a href=https://github.com/wayfair-tremor/tremor-vscode>tremor-vscode</a> git repository.</div><div id=ide-other>We are accepting contributions to support other IDEs.</div><h3 class=section-head id=h-trill><a href=#h-trill></a>Setup the tremor language server</h3><p>Clone the tremor-langauge-server git repository, build and install the server and place the binary on your path</p><blockquote><div class=highlight><pre class=chroma><code class=language-bash data-lang=bash><span class=nb>cd</span> <span class=nv>$HOME</span>/git
 git clone https://github.com/wayfair-tremor/tremor-language-server.git
+git clone https://github.com/wayfair-tremor/tremor-www-docs.git <span class=c1># needed to generate data for function doc completions</span>
 <span class=nb>cd</span> tremor-language-server
 cargo build --release
 <span class=nb>export</span> <span class=nv>PATH</span><span class=o>=</span><span class=sb>`</span><span class=nb>pwd</span><span class=sb>`</span>/target/release/tremor-language-server:<span class=nv>$PATH</span>
