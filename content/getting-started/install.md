@@ -77,12 +77,13 @@ git clone https://github.com/wayfair-tremor/tremor-runtime.git
   Follow the instructions in the <a href="https://github.com/wayfair-tremor/tremor-vim">tremor-vim</a> git repository, and
   ensure your `.vimrc` is updated and that you have the <a href="https://github.com/dense-analysis/ale">vim ALE</a> asynchronous
   lint engine.
+  
+  <pre>
+  cd $HOME/.vim/bundle
+  git clone https://github.com/wayfair-tremor/tremor-vim.git
+  </pre>
 
-
-  > ```bash
-  > cd $HOME/.vim/bundle
-  > git clone https://github.com/wayfair-tremor/tremor-vim.git
-  > ```
+</pre>
 
 </div>
 

@@ -10,7 +10,7 @@ toc= true
 
 ### IDE Integration
 
-![tremor-vim](/img/tremor-vim.png)
+![tremor-vim](/img/tremor/tremor-vim.png)
 
 With the [tremor language server](https://github.com/wayfair-tremor/tremor-language-server) tremor comes with advanced support for editing [Tremor Script and Tremor Query](https://tremor.rs/getting-started/scripting) in both Visual Studio Code and VIM.
 
@@ -22,7 +22,7 @@ The VIM plugin can be [installed from GitHub](https://github.com/wayfair-tremor/
 
 ### Informative Errors
 
-![tremor-vim](/img/error.png)
+![tremor-error](/img/tremor/error.png)
 
 Making errors are human, recently this realisation has gained popularity in the programming community with languages like rust tyring to provide helpful error message beyond a line number and a generic error.
 
