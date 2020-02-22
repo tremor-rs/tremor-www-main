@@ -2,8 +2,8 @@
 of applications, tremor separates processing from connectivity and distribution.</p><p>Tremor further separates the syntax of external formats from the implied value type
 semantics that are useful for filtering, processing, transforming, aggregating or
 otherwise deriving synthetic events from streams of data ingested by tremor processes.</p><p>As tremor is primarily an event processing system we refer to connections to external
-systems that are logically upstream of tremor as <code>Onramps</code> (#h-onramps). We refer to connections
-to external systems that are logically downstream of tremor as <code>Offramps</code>(#h-offramps).</p><p>For example; the Kafka onramp subscribes to topics in a Kafka cluster and consumes event data
+systems that are logically upstream of tremor as <a href=#h-onramps><code>Onramps</code></a>. We refer to connections
+to external systems that are logically downstream of tremor as <a href=#h-offramps><code>Offramps</code></a>.</p><p>For example; the Kafka onramp subscribes to topics in a Kafka cluster and consumes event data
 from those topics; the Kafka offramp publishes to topics in a Kafka cluster and contributes
 event data to topics.</p><p>Application logic in tremor can be connected to multiple onramps and/or offramps originating from
 or contributing to disparate systems. A simple passthrough application could enable bridging a
