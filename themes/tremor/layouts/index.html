@@ -13,20 +13,23 @@
     <p>
       Tremor is particularly well suited to log and metrics shipping resulting in
       10x less hosts, 10x less CPU and 10x less memory footprint than alternatives
-      such as logstash.<br />
+      such as logstash.
+    </p>
+    <p>
+      For data distribution at scale tremor introduces proactive rate limiting and
+      back-pressure handling. These facilities mean that when systems go
+      over-capacity during peak eCommerce trading environments where we are
+      running with scaled up infrastructure ( such as Cyber 5 ) - that upstream
+      or downstream resource saturation has no negative impact on our production
+      operations.
+    </p>
 
-      <p>
-        For data distribution at scale tremor introduces proactive rate limiting and
-        back-pressure handling. These facilities mean that when systems go
-        over-capacity during peak eCommerce trading environments where we are
-        running with scaled up infrastructure ( such as Cyber 5 ) - that upstream
-        or downstream resource saturation has no negative impact on our production
-        operations.<br />
+    <p>
+      Tremor replaces logstash, telegraf and other data distribution tools at <a
+        href="https://www.wayfair.com">Wayfair</a> with a
+      single easy to use, easy to configure high performance tool with consistent robust performance.
+    </p>
 
-        <p>
-          Tremor replaces logstash, telegraf and other data distribution tools at
-          (Wayfair)[https://www.wayfair.com] with a single easy to use, easy to
-          configure high performance tool with consistent robust performance.
   </div>
   <div id="action-buttons">
     <a class="button primary big" href="https://github.com/wayfair-tremor/tremor-runtime/releases"
