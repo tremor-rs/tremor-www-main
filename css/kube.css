@@ -318,6 +318,9 @@ mark, code, samp, kbd {
   line-height: 1;
   color: rgba(49, 52, 57, 0.85); }
 
+code {
+  background: #e0e1e1; }
+
 mark {
   background: #f7ba45; }
 
@@ -349,16 +352,14 @@ pre, code, samp, var, kbd, mark {
 
 pre,
 pre code {
-  border-radius: 10px;
+  background: #f8f8f8;
   padding: 0;
   top: 0;
   display: block;
   line-height: 20px;
-  color: #f8f8f2;
-  background-color: #282a36;
+  color: rgba(49, 52, 57, 0.85);
   overflow: none;
-  white-space: pre-wrap;
-}
+  white-space: pre-wrap; }
 
 pre {
   padding: 1rem; }
