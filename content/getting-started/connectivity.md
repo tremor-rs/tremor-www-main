@@ -18,8 +18,8 @@ semantics that are useful for filtering, processing, transforming, aggregating o
 otherwise deriving synthetic events from streams of data ingested by tremor processes.
 
 As tremor is primarily an event processing system we refer to connections to external
-systems that are logically upstream of tremor as `Onramps` (#h-onramps). We refer to connections
-to external systems that are logically downstream of tremor as `Offramps`(#h-offramps).
+systems that are logically upstream of tremor as [`Onramps`](#h-onramps). We refer to connections
+to external systems that are logically downstream of tremor as [`Offramps`](#h-offramps).
 
 For example; the Kafka onramp subscribes to topics in a Kafka cluster and consumes event data
 from those topics; the Kafka offramp publishes to topics in a Kafka cluster and contributes
