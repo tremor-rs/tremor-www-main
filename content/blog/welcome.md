@@ -13,6 +13,6 @@ weight = 10
 > on 22nd February 2020 at 20:02:02.
 >
 
-Catch as at [BOB2020](https://bobkonf.de/2020/en/) on the 28th February
+Catch us at [BOB2020](https://bobkonf.de/2020/en/) on the 28th February
 2020 in Berlin where we will be [talking](https://bobkonf.de/2020/ennis-gies.html) about our usage of the [Rust](https://www.rust-lang.org/) programming language to build high performance and high
 density production systems with Tremor.
