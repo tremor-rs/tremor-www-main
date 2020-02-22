@@ -6,53 +6,32 @@
   <div id="hero">
     <h1>{{.Title}}</h1>
     <p>{{.Description}}</p>
+    <figure>
+      <img alt="Why Tremor Stats" src="/img/tremor/stats.png" height=659 width=2400/>
+    </figure>
+
+    <p>
+    Tremor is particularly well suited to log and metrics shipping resulting in
+    10x less hosts, 10x less CPU and 10x less memory footprint than alternatives
+    such as logstash.<br/>
+
+    <p>
+    For data distribution at scale tremor introduces proactive rate limiting and
+    back-pressure handling. These facilities mean that when systems go
+    over-capacity during peak eCommerce trading environments where we are
+    running with scaled up infrastructure ( such as Cyber 5 ) - that upstream
+    or downstream resource saturation has no negative impact on our production
+    operations.<br/>
+
+    <p>
+    Tremor replaces logstash, telegraf and other data distribution tools at
+    [Wayfair](https://www.wayfair.com) with a single easy to use, easy to
+    configure high performance tool with consistent robust performance.
   </div>
   <div id="action-buttons">
-    <a class="button primary big" href="https://github.com/wayfair-incubator/tremor-runtime/releases" onclick="_gaq.push(['_trackEvent', 'tremor-runtime', 'download']);">Download</a> <a class="button outline big" href="https://github.com/wayfair-incubator/tremor-runtime" onclick="_gaq.push(['_trackEvent', 'tremor-runtime', 'github']);">View on Github</a>
+    <a class="button primary big" href="https://github.com/wayfair-tremor/tremor-runtime/releases" onclick="_gaq.push(['_trackEvent', 'tremor-runtime', 'download']);">Download</a> <a class="button outline big" href="https://github.com/wayfair-tremor/tremor-runtime" onclick="_gaq.push(['_trackEvent', 'tremor-runtime', 'github']);">View on Github</a>
     <p>Zip-archive, includes all the source and site example files</p>
   </div>
-  <div id="kube-features">
-<!--
-    <div class="row gutters">
-      <div class="col col-4 item">
-        <figure>
-          <img alt="Baseline" height="48" src="{{ "/img/kube/icon-baseline.png" | relURL }}" width="48">
-        </figure>
-        <h3>Horizontal Rhythm</h3>
-        <p>In Kube horizontal rhythm based on a 4px vertical grid is something that we are truly proud of.</p>
-      </div>
-      <div class="col col-4 item">
-        <figure>
-          <img alt="Typography" height="48" src="{{ "/img/kube/icon-typo.png" | relURL }}" width="48">
-        </figure>
-        <h3>Typography</h3>
-        <p>We obsess over typography, and it shows throughout Kube.</p>
-      </div>
-      <div class="col col-4 item">
-        <figure>
-          <img alt="Minimalism" height="48" src="{{ "/img/kube/icon-minimalism.png" | relURL }}" width="48">
-        </figure>
-        <h3>Minimalism</h3>
-        <p>We strongly believe in minimalism as a general concept as well as a practical approach to everyday life.</p>
-      </div>
-    </div>
-    <div class="row gutters">
-      <div class="col col-4 item">
-        <h4>Mobile-first Design</h4>
-        <p>Every element in kube is mobile-first and fully embraces latest and greatest tech.</p>
-      </div>
-      <div class="col col-4 item">
-        <h4>Cross-browser</h4>
-        <p>Kube works in all modern browsers, both desktop and mobile, including latest Chrome, Firefox, Safari, Opera, IE and Edge.</p>
-      </div>
-      <div class="col col-4 item">
-        <h4>License</h4>
-        <p>Kube licensed under <a href="https://opensource.org/licenses/MIT">MIT</a>.<br>
-      Kube Framework is absolutely free for personal or commercial use.</p>
-    </div>
-  </div>
-</div>
--->
 </div>
 {{ end }}
 {{ define "footer"}} {{ partial "footer" .}} {{end}}
