@@ -20,23 +20,31 @@ Paginate = 6
 
 [[menu.main]]
     name = "Blog"
-    weight = -500
+    weight = 100
     url = "/blog/"
 [[menu.main]]
     name = "Faq"
-    weight = -400
+    weight = 200
     url = "/faq/"
 [[menu.main]]
     name = "Getting Started"
-    weight = -300
+    weight = 300
     url = "/getting-started/"
 [[menu.main]]
+    name = "Docs"
+    weight = 400
+    url = "https://docs.tremor.rs/"
+[[menu.main]]
+    name = "RFCs"
+    weight = 500
+    url = "https://rfcs.tremor.rs/"
+[[menu.main]]
     name = "Community"
-    weight = -200
+    weight = 600
     url = "/community/"
 [[menu.main]]
     name = "Governance"
-    weight = -100
+    weight = 700
     url = "/governance/"
 
 [[redirects]]
