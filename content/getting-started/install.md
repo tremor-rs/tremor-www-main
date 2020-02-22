@@ -77,7 +77,7 @@ git clone https://github.com/wayfair-tremor/tremor-runtime.git
   Follow the instructions in the <a href="https://github.com/wayfair-tremor/tremor-vim">tremor-vim</a> git repository, and
   ensure your `.vimrc` is updated and that you have the <a href="https://github.com/dense-analysis/ale">vim ALE</a> asynchronous
   lint engine.
-  
+
   <pre>
   cd $HOME/.vim/bundle
   git clone https://github.com/wayfair-tremor/tremor-vim.git
@@ -102,6 +102,7 @@ git clone https://github.com/wayfair-tremor/tremor-runtime.git
   > ```bash
   > cd $HOME/git
   > git clone https://github.com/wayfair-tremor/tremor-language-server.git
+  > git clone https://github.com/wayfair-tremor/tremor-www-docs.git # needed to generate data for function doc completions
   > cd tremor-language-server
   > cargo build --release
   > export PATH=`pwd`/target/release/tremor-language-server:$PATH
