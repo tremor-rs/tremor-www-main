@@ -102,7 +102,6 @@ git clone https://github.com/wayfair-tremor/tremor-runtime.git
   > ```bash
   > cd $HOME/git
   > git clone https://github.com/wayfair-tremor/tremor-language-server.git
-  > git clone https://github.com/wayfair-tremor/tremor-www-docs.git # needed to generate data for function doc completions
   > cd tremor-language-server
   > cargo build --release
   > export PATH=`pwd`/target/release/tremor-language-server:$PATH
