@@ -5,7 +5,7 @@ tags = ["announce"]
 categories = ["general"]
 draft = false
 description = "Announcement of Tremor as an OSS project"
-weight = 10
+weight = -20200222
 +++
 
 >
