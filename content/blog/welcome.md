@@ -1,5 +1,5 @@
 +++
-date = "1020-02-22T20:02:02+00:00"
+date = "2020-02-22T20:02:02+00:00"
 title = "Tremor is now Open Source"
 tags = ["announce"]
 categories = ["general"]
