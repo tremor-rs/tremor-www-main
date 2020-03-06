@@ -1,5 +1,5 @@
 +++
-date = "2020-03-06T10:08+00:00"
+date = "2020-03-06T10:08:00+00:00"
 title = "Improving our influx parser - a story in four acts"
 tags = ["perf"]
 categories = ["general"]
