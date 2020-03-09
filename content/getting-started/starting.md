@@ -18,7 +18,7 @@ With that a running versin of [Docker](https://docker.io) on a system with an in
 
 ### Get Tremor
 
-The simplest way to get tremor is downloading the [Docker Image](https://hub.docker.com/r/tremor/tremor). You can grab the latest version of Tremor by typing:
+The simplest way to get tremor is downloading the [Docker Image](https://hub.docker.com/r/tremorproject/tremor). You can grab the latest version of Tremor by typing:
 
 ```bash
 docker pull tremorproject/tremor:latest
