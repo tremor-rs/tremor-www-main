@@ -26,7 +26,7 @@ docker pull tremorproject/tremor:latest
 
 ### Configuring Tremor
 
-If you just want to see tremor start, you can skip this step, but lets be real, you prbably want to make tremor do something more interesting then printing a few numbers on the screen.
+If you just want to see tremor start, you can skip this step, but lets be real, you probably want to make tremor do something more interesting then printing a few numbers on the screen.
 
 The tremor Docker image is configured by mounting a configuration folder to `/etc/tremor`
 
@@ -44,11 +44,11 @@ The structure is as follows:
 * `config/*.trickle` One or more trickle files loaded in lexigraphical order to provide pipelines.
 * `config/*.yaml` One or more YAML files with configurations for Onramps, Offramps and Bindings and Mappings.
 
-For details on the files plese consult the [documentation](https://docs.tremor.rs/operations/configuration).
+For details on the files please consult the [documentation](https://docs.tremor.rs/operations/configuration).
 
 ### Running
 
-Once downaloaded and configured starting the tremor docker image can be done with
+Once downloaded and configured starting the tremor docker image can be done with
 
 ```bash
 docker run -v host/path/to/etc/tremor:/etc/tremor tremor-runtime
