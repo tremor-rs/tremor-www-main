@@ -48,14 +48,10 @@ Select the operating system your are developing on.
   <table class="bordered striped">
     <tr><th class="w20">Type</th><th>Is Supported?</th></tr>
     <tr><td>IDE Support</td><td>Yes</td></tr>
-    <tr><td>Development</td><td>Accepting contributions</td></tr>
+    <tr><td>Development</td><td>Yes</td></tr>
     <tr><td>Production</td><td>Accepting contributions</td></tr>
   </table>
 </div>
-
-```bash
-git clone https://github.com/wayfair-tremor/tremor-runtime.git
-```
 
 <h3 class="section-head" id="h-ide"><a href="#h-ide"></a>Setup an IDE / editor</h3>
 <nav class="tabs" data-component="tabs">
@@ -97,7 +93,7 @@ git clone https://github.com/wayfair-tremor/tremor-runtime.git
 
 <h3 class="section-head" id="h-trill"><a href="#h-trill"></a>Setup the tremor language server</h3>
 
-  Clone the tremor-langauge-server git repository, build and install the server and place the binary on your path
+  Clone the tremor-langauge-server git repository, build and install the server and place the binary on your path.
 
   > ```bash
   > cd $HOME/git
@@ -115,3 +111,5 @@ git clone https://github.com/wayfair-tremor/tremor-runtime.git
   > cd tremor-runtime
   > cargo build --release --all # go get a nice cup of tea
   > ```
+
+For more details on building tremor, please refer to the [tremor development docs](https://docs.tremor.rs/development/quick-start/).
