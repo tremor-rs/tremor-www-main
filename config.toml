@@ -46,6 +46,10 @@ Paginate = 6
     name = "Governance"
     weight = 700
     url = "/governance/"
+[[menu.main]]
+    name = "Chat"
+    weight = 800
+    url = "https://chat.tremor.rs/"
 
 [[redirects]]
   from = "/*"
