@@ -12,18 +12,18 @@ With the upcoming tremor release, 0.9.0, we're moving from threads as a basis fo
 
 Let's talk about why this is significant, what is changing, and how the architecture is changing.
 
-Note that this is not a comprehensive treatise on threads or async tasks. 
+Note that this is not a comprehensive treatise on threads or async tasks.
 
 ## The tremor that was (threads)
 
-Threads are a basic building block of programs that execute multiple pieces of code concurrently. 
+Threads are a basic building block of programs that execute multiple pieces of code concurrently.
 The operating system is responsible for coordinating across competing resource demands.
 
 The OS can preempt, pause, and resume threads. We can leverage infinite or tight loops without the risk of completely blocking execution. These guarantees make concurrent code more accessible, with tools like`crossbeam-channels` to build upon.
 
 Threads work especially well in use cases where the system and logical concurrency models are well aligned; or, we can easily map application threads to logical cores on the system being used. Each thread can happily work away on its part of the logic and pass the result on to the next. The one thread per core model is what tremor 0.8 and earlier used. We had a thread for the onramp, a thread for the pipeline, and a thread for the offramp. As the computational cost of decoding, processing, and encoding was often in the same ballpark, this works exceptionally well. We managed to push up to 400MB/s of JSON through the system this way (including parsing, tremor-script logic, and serialization).
 
-This design can degenerate badly if there are more ramps and pipelines than cores on the system in use. Throughput degrades rapidly (as in up to 2 orders of magnitude worse at 30:1 ratio). At the time of writing this, the deployment model was one pipeline/ramp group on a four-core system, so it worked well in practice. 
+This design can degenerate badly if there are more ramps and pipelines than cores on the system in use. Throughput degrades rapidly (as in up to 2 orders of magnitude worse at 30:1 ratio). At the time of writing this, the deployment model was one pipeline/ramp group on a four-core system, so it worked well in practice.
 
 However, this places a burden on operators having to think about concurrency and parallelism to tune tremor for optimal performance and capacity.
 
@@ -31,7 +31,7 @@ In SMP systems, we observe other undesireable effects: The moment two communicat
 
 ## Async/futures
 
-Futures, and in rust `async/await` (short async from here on), work differently than threads. With threads, the operating system has ultimate control over which thread is scheduled to work when. With async we can more flexibily manage scheduling in application code. This has many advantages in systems software.
+Futures, and in rust `async/await` (short async from here on), work differently than threads. With threads, the operating system has ultimate control over which thread is scheduled to work when. With async we can more flexibly manage scheduling in application code. This has many advantages in systems software.
 
 Instead of the operating system preempting a thread, tasks require coordination within the application. The advantage is that since we can control where we take a pause, we can provide soft guarantees that the thread of control yields to the task schedulers in a way that better fits the application. A good example is async-io, where we allow another task to work whenever we have to wait for some IO.
 
@@ -43,7 +43,7 @@ In rust, calling `.await` is effectively, not a guarantee. We cannot know if an 
 
 With regards to performance: Tasks are typically cheaper from a context switching perspective, and we have finer grained control. On the other hand, we lose control over where a task runs, while we can pin threads to cores to schedule affinity on SMP systems, tasks may migrate across cores or executers move freely.
 
-In tremor, we have adopted the `smol` small and fast async runtime. When two tasks can run consecutively on the same executor, smol will schedule them in different executors. A significant improvement over the thread-based tremor runtime is that smol does not aggressively steal work from other schedulers if they are not overloaded. This avoids the runtime trashing CPU caches based on micro-benchmarking results.
+In tremor, we have adopted the `smol` small and fast async runtime. When two tasks can run consecutively on the same executor, `smol` will schedule them in different executors. A significant improvement over the thread-based tremor runtime is that `smol` does not aggressively steal work from other schedulers if they are not overloaded. This avoids the runtime trashing CPU caches based on [micro-benchmarking results](https://github.com/async-rs/async-std/issues/848).
 
 ## Behavioural improvements
 
@@ -57,7 +57,7 @@ Deploying a higher number of pipelines per instance changes our needs of the und
 
 Ab initio, the switch has some practical implications, mainly an improvement in performance.
 
-In tremor v0.8.0, colocating pipelines required careful capacity planning and tuning by experienced operators. In tremor v0.9.0, this constraint has been lifted and the capacity planning burden drastically simplified. Improvements in smol itself over the last few versions means we have broken the 500MB/s throughput barrier  for the first time with the new task-based runtime, which is quite a nice bonus.
+In tremor v0.8.0, colocating pipelines required careful capacity planning and tuning by experienced operators. In tremor v0.9.0, this constraint has been lifted and the capacity planning burden drastically simplified. Improvements in `smol` itself over the last few versions means we have broken the 500MB/s throughput barrier  for the first time with the new task-based runtime, which is quite a nice bonus.
 
 Let's end with some pretty graphs. After all, a picture says more than a thousand words.
 
