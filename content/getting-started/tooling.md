@@ -4,7 +4,7 @@ date = "2020-02-05T10:01:00+01:00"
 draft = false
 weight = 300
 description = "Tooling"
-bref= "Tooling is a first class concear for tremor"
+bref= "Tooling is a first class concern for tremor"
 toc= true
 +++
 
@@ -16,7 +16,7 @@ With the [tremor language server](https://github.com/wayfair-tremor/tremor-langu
 
 To install the `tremor-language-server`  you require [rust to be set up](https://rustup.rs) on your system and then can simply run `cargo install tremor-language-server`.
 
-The VS Code extension is available on the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=tremor.vscode-tremor).
+The VS Code extension is available on the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=tremorproject.tremor-language-features).
 
 The VIM plugin can be [installed from GitHub](https://github.com/wayfair-tremor/tremor-vim).
 
@@ -24,6 +24,6 @@ The VIM plugin can be [installed from GitHub](https://github.com/wayfair-tremor/
 
 ![tremor-error](/img/tremor/error.png)
 
-Making errors are human, recently this realisation has gained popularity in the programming community with languages like rust tyring to provide helpful error message beyond a line number and a generic error.
+Making errors human-friendly: recently, this realisation has gained popularity in the programming community with languages like rust tyring to provide helpful error messages beyond a line number and a generic error.
 
-When developing tremor those concears of developer and operator frindliness were front and center form the beginning. Effort went into making errors and warning informative and not leaving users with stack traces, or cryptic output.
+When developing tremor, those concerns of developer and operator friendliness were front and center from the beginning. Effort went into making errors and warning informative and not leaving users with stack traces, or cryptic output.
