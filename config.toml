@@ -14,7 +14,7 @@ Paginate = 6
 [Params]
   RSSLink = "/index.xml"
   author = "The Tremor Team" # add your company name
-  github = "wayfair-tremor" # add your github profile name
+  github = "tremor-rs" # add your github profile name
   twitter = "TremorDEBS" # add your twitter profile
   email = "#"
 

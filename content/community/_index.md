@@ -22,4 +22,4 @@ Now we just need to figure out which of the many wonderful community enabling to
 
 ## Fork now
 
-For now, fork this web site on github or create an [issue](https://github.com/wayfair-tremor/tremor-www-main/issues) to get in touch while we figure out a better way!
+For now, fork this web site on github or create an [issue](https://github.com/tremor-rs/tremor-www-main/issues) to get in touch while we figure out a better way!

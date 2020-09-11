@@ -11,7 +11,7 @@ weight = -20200306
  
 # Influx parsing performance
  
-Yesterday we spent the day on a report [that our influx parser was slow](https://github.com/wayfair-tremor/tremor-runtime/issues/82),
+Yesterday we spent the day on a report [that our influx parser was slow](https://github.com/tremor-rs/tremor-runtime/issues/82),
 it turns out it indeed was.
  
 This is an exciting topic as just a few days ago we [gave a talk at BoBKonf 2020](https://bobkonf.de/2020/ennis-gies.html) on this topic so this is a great opportunity to show some of the topics and our process in action.
@@ -24,7 +24,7 @@ One is [perf](http://brendangregg.com/perf.html), which we used with a minimal s
  
 The other one is [criterion](https://docs.rs/criterion/0.3.1/criterion/) an excellent rust framework for microbenchmarks based on the [haskell framework](https://hackage.haskell.org/package/criterion) with the same name. It is so helpful since it allows us to show changes in performance between changes. That makes it perfect for the kind of incremental improvements our process favors.
  
-## [Act 1 - Allocation](https://github.com/wayfair-tremor/tremor-runtime/pull/87/commits/42ee11637bc5cd3a215cce1cb841afe791b944b4)
+## [Act 1 - Allocation](https://github.com/tremor-rs/tremor-runtime/pull/87/commits/42ee11637bc5cd3a215cce1cb841afe791b944b4)
  
 We talked a bit about allocations and how they can slow down programs in our talk. We tackled two main areas there, and both of them applied to this benchmark.
  
@@ -63,7 +63,7 @@ Found 1 outliers among 100 measurements (1.00%)
  1 (1.00%) high mild
 ```
  
-## [Act 2 - Degeneralisation](https://github.com/wayfair-tremor/tremor-runtime/pull/87/commits/d1490fb940ad99ca3570e4af8c5f5407c4d054e6)
+## [Act 2 - Degeneralisation](https://github.com/tremor-rs/tremor-runtime/pull/87/commits/d1490fb940ad99ca3570e4af8c5f5407c4d054e6)
  
 When we originally wrote the code, what we did is generalize the "find a character" logic between the cases where we were looking for one, two, or three distinct characters to terminate a token.
  
@@ -99,7 +99,7 @@ Found 7 outliers among 100 measurements (7.00%)
  1 (1.00%) high severe
 ```
  
-## [Act 3 - Outside help](https://github.com/wayfair-tremor/tremor-runtime/pull/87/commits/6c9ee7ce64d1474bbd609f7ad99e4303b0ee98df)
+## [Act 3 - Outside help](https://github.com/tremor-rs/tremor-runtime/pull/87/commits/6c9ee7ce64d1474bbd609f7ad99e4303b0ee98df)
  
 Not all performance improvements have to be written in code, sometimes asking the right question and looking for the right thing can do the trick.
  
@@ -141,7 +141,7 @@ Found 4 outliers among 100 measurements (4.00%)
  3 (3.00%) high severe
 ```
  
-## [Act 4 - Borrow vs. Owned](https://github.com/wayfair-tremor/tremor-runtime/pull/87/commits/eb24fd9c3f5982a2dae743abd41a75a4253eec07)
+## [Act 4 - Borrow vs. Owned](https://github.com/tremor-rs/tremor-runtime/pull/87/commits/eb24fd9c3f5982a2dae743abd41a75a4253eec07)
  
 The last act is a bit more exciting, so we'll spend extra time on it (both here and when implementing it).
  
@@ -196,7 +196,7 @@ Found 3 outliers among 100 measurements (3.00%)
  1 (1.00%) low mild
 ```
 
-## [Conclusion](https://github.com/wayfair-tremor/tremor-runtime/pull/87)
+## [Conclusion](https://github.com/tremor-rs/tremor-runtime/pull/87)
 
 So we performed 3 very simple and one more complex tweaks, and this doubled the performance of our influx parsing. As you can see, a few simple tweaks, when added together, can have some massive impact.
 

@@ -70,13 +70,13 @@ Select the operating system your are developing on.
 
 
 <div id="ide-vim">
-  Follow the instructions in the <a href="https://github.com/wayfair-tremor/tremor-vim">tremor-vim</a> git repository, and
+  Follow the instructions in the <a href="https://github.com/tremor-rs/tremor-vim">tremor-vim</a> git repository, and
   ensure your `.vimrc` is updated and that you have the <a href="https://github.com/dense-analysis/ale">vim ALE</a> asynchronous
   lint engine.
 
   <pre>
   cd $HOME/.vim/bundle
-  git clone https://github.com/wayfair-tremor/tremor-vim.git
+  git clone https://github.com/tremor-rs/tremor-vim.git
   </pre>
 
 </pre>
@@ -84,7 +84,7 @@ Select the operating system your are developing on.
 </div>
 
 <div id="ide-vscode">
-  Follow the instructions in the <a href="https://github.com/wayfair-tremor/tremor-vscode">tremor-vscode</a> git repository.
+  Follow the instructions in the <a href="https://github.com/tremor-rs/tremor-vscode">tremor-vscode</a> git repository.
 </div>
 
 <div id="ide-other">
@@ -97,7 +97,7 @@ Select the operating system your are developing on.
 
   > ```bash
   > cd $HOME/git
-  > git clone https://github.com/wayfair-tremor/tremor-language-server.git
+  > git clone https://github.com/tremor-rs/tremor-language-server.git
   > cd tremor-language-server
   > cargo build --release
   > export PATH=`pwd`/target/release/tremor-language-server:$PATH
@@ -107,7 +107,7 @@ Select the operating system your are developing on.
 
   > ```bash
   > cd $HOME/git
-  > git clone https://github.com/wayfair-tremor/tremor-runtime.git
+  > git clone https://github.com/tremor-rs/tremor-runtime.git
   > cd tremor-runtime
   > cargo build --release --all # go get a nice cup of tea
   > ```
