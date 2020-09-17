@@ -49,7 +49,7 @@ Paginate = 6
 [[menu.main]]
     name = "Chat"
     weight = 800
-    url = "https://chat.tremor.rs/"
+    url = "https://slack.cncf.io/"
 
 [[redirects]]
   from = "/*"
