@@ -49,7 +49,7 @@ Paginate = 6
 [[menu.main]]
     name = "Chat"
     weight = 800
-    url = "https://slack.cncf.io/"
+    url = "https://cloud-native.slack.com/messages/tremor"
 
 [[redirects]]
   from = "/*"
