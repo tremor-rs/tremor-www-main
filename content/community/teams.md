@@ -31,6 +31,7 @@ Direction of the project, subteam leadership, cross-cutting concerns.
 * Anup Dhamala
 * Darach Ennis
 * Heinz Gies
+* Matthias Wahl
 
 ### Architecture (arch)
 
@@ -41,6 +42,7 @@ Overarching architectural concepts, pipeline and concurrency
 * Anup Dhamala
 * Darach Ennis
 * Heinz Gies
+* Matthias Wahl
 
 ### Language (lang)
 
@@ -51,6 +53,7 @@ Designing new language features
 * Anup Dhamala
 * Darach Ennis
 * Heinz Gies
+* Matthias Wahl
 
 ### Library (libs)
 
@@ -61,6 +64,7 @@ Operators, On and Offramps, Codecs, Functions, and Aggregates
 * Anup Dhamala
 * Darach Ennis
 * Heinz Gies
+* Matthias Wahl
 
 ### API (api)
 
@@ -71,4 +75,5 @@ API's and endpoints
 * Anup Dhamala
 * Darach Ennis
 * Heinz Gies
+* Matthias Wahl
 
