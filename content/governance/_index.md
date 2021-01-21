@@ -4,9 +4,9 @@ title = "Governance"
 description = "Tremor project governance model"
 +++
 
-The tremor project originated as an internal solution at Wayfair and is currently transitioning
-to fully open community based open source development. There are three pillars to the governance
-model for tremor that are worth explicitly acknowledging.
+The tremor project originated as an internal solution at Wayfair and has become a CNCF sandbox
+project with an open community based open source development model. There are three pillars to the
+governance model for tremor that are worth explicitly acknowledging.
 
 ## Governance model
 

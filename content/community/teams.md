@@ -18,9 +18,9 @@ Helping uphold the code of conduct
 
 #### Members
 
-* Natali Vlatko
 * Dan Rowe
 * Jordan Chernev
+* Natali Vlatko
 
 ### Core (core)
 
@@ -76,4 +76,3 @@ API's and endpoints
 * Darach Ennis
 * Heinz Gies
 * Matthias Wahl
-
