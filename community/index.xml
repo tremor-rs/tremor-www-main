@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Community on Tremor</title><link>/community/</link><description>Recent content in Community on Tremor</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 05 Feb 2020 13:11:00 +0100</lastBuildDate><atom:link href="/community/index.xml" rel="self" type="application/rss+xml"/><item><title>Tremor Teams</title><link>/community/teams/</link><pubDate>Wed, 05 Feb 2020 13:11:00 +0100</pubDate><guid>/community/teams/</guid><description>Tremors team structure is heaviley inspired and influenced by rusts governance model.
 Moderation (mod) Helping uphold the code of conduct
-Members Natali Vlatko Dan Rowe Jordan Chernev Core (core) Direction of the project, subteam leadership, cross-cutting concerns.
+Members Dan Rowe Jordan Chernev Natali Vlatko Core (core) Direction of the project, subteam leadership, cross-cutting concerns.
 Members Anup Dhamala Darach Ennis Heinz Gies Matthias Wahl Architecture (arch) Overarching architectural concepts, pipeline and concurrency
 Members Anup Dhamala Darach Ennis Heinz Gies Matthias Wahl Language (lang) Designing new language features</description></item></channel></rss>
