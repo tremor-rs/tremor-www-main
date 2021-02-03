@@ -47,9 +47,13 @@ Paginate = 6
     weight = 700
     url = "/governance/"
 [[menu.main]]
-    name = "Chat"
+    name = "Announcements"
     weight = 800
     url = "https://cloud-native.slack.com/messages/tremor"
+[[menu.main]]
+    name = "Community Chat"
+    weight = 900
+    url = "https://bit.ly/tremor-discord"
 
 [[redirects]]
   from = "/*"
