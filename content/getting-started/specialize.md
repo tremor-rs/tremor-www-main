@@ -12,7 +12,7 @@ toc= true
 
 Some behaviour is either so performance critical or so specialized that it can't or shouldn't be expressed using  [Tremor Script](https://tremor.rs/getting-started/scripting/#h-script).
 
-The solution to this is custom operators. Unlike tremor script that is interpreted at run time they are written in [rust](https://rust-lang.org) and can take advantage of the rust ecosystem and natively compiled perforamnce.
+The solution to this is custom operators. Unlike tremor script that is interpreted at run time they are written in [rust](https://rust-lang.org) and can take advantage of the rust ecosystem and natively compiled performance.
 
 ### Operators
 

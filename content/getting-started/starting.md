@@ -14,7 +14,7 @@ toc= true
 
 While there are many ways to install Tremor, be it as a package or compiling it form source this quickstart guide will use a Docker image to make it as painless as possible to get a first instance of tremor running.
 
-With that a running versin of [Docker](https://docker.io) on a system with an internet connection is required.
+With that a running version of [Docker](https://docker.io) on a system with an internet connection is required.
 
 ### Get Tremor
 
