@@ -10,7 +10,7 @@
 
 [CII Best Practices]: https://bestpractices.coreinfrastructure.org/projects/4356/badge
 [bestpractices]: https://bestpractices.coreinfrastructure.org/projects/4356
-[GitHub]: https://img.shields.io/github/license/tremor-rs/tremor-runtime
+[GitHub]: https://img.shields.io/github/license/tremor-rs/tremor-www-main
 [Discord]: https://img.shields.io/discord/752801695066488843.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2
 [discord-invite]: https://bit.ly/tremor-discord
 
