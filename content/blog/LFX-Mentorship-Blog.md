@@ -230,7 +230,7 @@ Supported codecs, that can be configured in yam file can be found here: [codecs]
 - Create a topic using the following `gcloud` command:
 
 ```bash
-gcloud pubsub topics create <topic-name>
+gcloud pubsub topics create <`topic-name`>
 ```
 
 - Set the env variable
@@ -248,7 +248,7 @@ TREMOR_PATH=tremor-script/lib target/debug/tremor server run -f outbound.trickle
 - After running tremor, create a subscription:
 
 ```bash
-{"command": "create_subscription", "project": "<project-id>", "topic": "<topic-name>", "subscription": "<name-of-subscription>", "message_ordering": <message-ordering>}
+{"command": "create_subscription", "project": "<project-id>", "topic": "<topic-name>", "subscription": "<name-of-subscription>", "message_ordering": <`message-ordering`>}
 ```
 
 *where:*
@@ -262,7 +262,7 @@ TREMOR_PATH=tremor-script/lib target/debug/tremor server run -f outbound.trickle
 - To send a message:
 
 ```bash
-{"command": "send_message", "project":"<project-id>", "topic":"<topic-name>", "data": <data>, "ordering_key": "<ordering-key>"}
+{"command": "send_message", "project":"<project-id>", "topic":"<topic-name>", "data": <`data`>, "ordering_key": "<ordering-key>"}
 ```
 
 *where:*
