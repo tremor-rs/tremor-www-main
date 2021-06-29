@@ -1,4 +1,15 @@
-## LFX Mentorship
++++
+date = "2021-06-29T17:25:00+01:00"
+title = "Jigyasa's LFX spring Mentorship experience report"
+tags = ["perf"]
+categories = ["general"]
+draft = false
+description = "Experience contributing to Tremor and work overview"
+weight = -20200306
++++ 
+
+
+### Introduction
 
 Hello folks! I'm Jigyasa, a final-year computer science engineering student at Indira Gandhi Delhi Technical University for Women pursuing my bachelor's in Technology. This blog is about my experience contributing to [Tremor](https://www.tremor.rs/) as part of the LFX Mentorship program.
 
@@ -48,9 +59,9 @@ Before explaining more about it, here's what a connector involves:
 
 **Sinks:** Send serialised events to the outside world ( offramps )
 
-**Pipelines:** Business logic compiles to an event flow Directed Acyclic Graph
+Connectors serve the purpose of sending events to and receiving events from the outside world. A connector can be an event `source` (a.k.a. `onramp`) or an event `sink` (a.k.a. `offramp`) or both.
 
-![Connector](/img/blog/LFX-Mentorship/connector.png?raw=true)
+![Connector](/img/blog/LFX-blog-jigyasa/connector.png?raw=true)
 
 #### Google Cloud Storage connector:
 
@@ -58,14 +69,14 @@ I wrote a GCS sink that can issue the basic GCS operations such as list buckets 
 
 #### Google Cloud Pub/Sub connector:
 
-The sink can issue the operation of sending a message to a Google Cloud Pub/Sub topic. It also allows creating a subscription to a topic to receive messages in it, with the option to enable/disable message ordering. The source allows receiving messages via a subscription in batches as well as one after another. The docs can be found here:
+The gpub sink can issue the operation of sending a message to a Google Cloud Pub/Sub topic. It also allows creating a subscription to a topic to receive messages in it, with the option to enable/disable message ordering. The gsub source allows receiving messages via a subscription in batches as well as one after another. The docs can be found here:
 [gpub offramp](https://docs.tremor.rs/artefacts/offramps/#gpub) and [gsub onramp](https://docs.tremor.rs/artefacts/onramps/#gsub)
 
 ## Walk-Through Guide
 
 To get started, you need a service account on GCP and you will need a GCP pem file for certificates authentication and a service token json file.
 
-The command used to get the service_account `json` file:
+The command used to get the service token `json` file:
 ```bash
 gcloud iam service-accounts keys create key-file.json -iam-account=<iam-account-name>@<project-id>.iam.gserviceaccount.com
 ```
@@ -74,11 +85,11 @@ or
 gcloud iam service-accounts keys create key-file.json -iam-account=<mail-id-of-service-account>
 ```
 
-Go to GCP dashboard → IAM & Admin → Service Accounts and get the email-id mentioned `<mail-id-of-service-account> = email-id`
+Go to GCP dashboard → IAM & Admin → Service Accounts and get the email-id mentioned which is the `<mail-id-of-service-account>`
 
 ### Google Cloud Storage
 
-The following files are required:
+The following is a usage example of the gcs connector. The following files are required:
 
 **outbound.trickle**
 
@@ -103,9 +114,11 @@ offramp:
     type: gcs
     codec: json
     postprocessors:
-      - gzip    
+      - lines 
+      - gzip   
     preprocessors:
-      - gzip
+      - gzip 
+      - lines
     linked: true
     config:
       pem: <path-to-pem-file>
@@ -131,11 +144,9 @@ mapping:
   "/binding/example/passthrough":
     instance: "passthrough"
 ```
-Supported preprocessors, that can be configured in yaml file can be found here: [preprocessors](https://docs.tremor.rs/artefacts/preprocessors/)
-
-Supported postprocessors and more about it: [postprocessors](https://docs.tremor.rs/artefacts/postprocessors/)
-
-Supported codecs, that can be configured in yam file can be found here: [codecs](https://docs.tremor.rs/artefacts/codecs/)
+The instance variable (in the binding) is replaced by the value passthrough in the mapping upon deployment, so it is possible to define multiple bindings (deployments) for a single mapping (template).
+Supported preprocessors, that can be configured in yaml file can be found here: [preprocessors](https://docs.tremor.rs/artefacts/preprocessors/). Supported postprocessors and more about it: [postprocessors](https://docs.tremor.rs/artefacts/postprocessors/).
+Supported codecs, that can be configured in yaml file can be found here: [codecs](https://docs.tremor.rs/artefacts/codecs/)
 
 - Set the env variable
 
@@ -146,7 +157,7 @@ export GOOGLE_APPLICATION_CREDENTIALS="<path-to-service-token-json-file>"
 - Command used to run tremor:
 
 ```bash
- TREMOR_PATH=tremor-script/lib target/debug/tremor server run -f outbound.trickle inbound.trickle test.yaml | jq .
+tremor server run -f outbound.trickle inbound.trickle test.yaml | jq .
 ```
 For a detailed guide on the operations that can be performed, refer the [docs](https://docs.tremor.rs/artefacts/offramps/#gcs).
 
@@ -156,7 +167,7 @@ Google Cloud Pub/Sub guarantees delivery of all messages, whether low throughput
 
 Pub/Sub guarantees at-least-once message delivery, which means that occasional duplicates are to be expected since we acknowledge the messages once they are received.
 
-The following files are required:
+The following is a usage example of the pub/sub connector. These are the files are required:
 
 **outbound trickle:** 
 
@@ -182,7 +193,8 @@ offramp:
     type: gpub
     codec: json
     postprocessors:
-      - gzip   
+      - lines
+      - gzip    
     linked: true 
     config:
       pem: <path-to-pem-file>
@@ -197,6 +209,7 @@ onramp:
     codec: json  
     preprocessors:
       - gzip
+      - lines
     config:
       pem: <path-to-pem-file>
       subscription: '<name-of-subscription>'
@@ -219,18 +232,16 @@ mapping:
     instance: "passthrough"
 ```
 
-Supported preprocessors, that can be configured in yam file can be found here: [preprocessors](https://docs.tremor.rs/artefacts/preprocessors/)
+Supported preprocessors, that can be configured in yaml file can be found here: [preprocessors](https://docs.tremor.rs/artefacts/preprocessors/).
+Supported postprocessors and more about it: [postprocessors](https://docs.tremor.rs/artefacts/postprocessors/).
+Supported codecs, that can be configured in yaml file can be found here: [codecs](https://docs.tremor.rs/artefacts/codecs/)
 
-Supported postprocessors and more about it: [postprocessors](https://docs.tremor.rs/artefacts/postprocessors/)
-
-Supported codecs, that can be configured in yam file can be found here: [codecs](https://docs.tremor.rs/artefacts/codecs/)
-
-![Tremor Dot Diagrm](/img/blog/LFX-Mentorship/dot-diagram.png)
+![Tremor Dot Diagram](/img/blog/LFX-blog-jigyasa/dot-diagram.png)
 
 - Create a topic using the following `gcloud` command:
 
 ```bash
-gcloud pubsub topics create <`topic-name`>
+gcloud pubsub topics create <topic-name>
 ```
 
 - Set the env variable
@@ -242,9 +253,12 @@ export GOOGLE_APPLICATION_CREDENTIALS="<path-to-service-token-json-file>"
 - Command used to run tremor:
 
 ```bash
-TREMOR_PATH=tremor-script/lib target/debug/tremor server run -f outbound.trickle inbound.trickle test.yaml | jq .
+tremor server run -f outbound.trickle inbound.trickle test.yaml | jq .
 ```
 
+Refer to the [gpub](https://docs.tremor.rs/artefacts/offramps/#gpub) and [gsub](https://docs.tremor.rs/artefacts/onramps/#gsub) docs to perform opertaions.
+<!-- docs on the website are not updated rn! -->
+<!-- REMOVING IT BECAUSE IT'S IN THE DOCS
 - After running tremor, create a subscription:
 
 ```bash
@@ -269,13 +283,17 @@ TREMOR_PATH=tremor-script/lib target/debug/tremor server run -f outbound.trickle
 
 ***<`data`>** - `json` message to be sent to the topic*
 
-***<`ordering-key`>** - If non-empty, identifies related messages for which publish order should be respected. If a Subscription has enable_message_ordering set to true, messages published with the same non-empty ordering_key value will be delivered to subscribers in the order in which they are received by the pub/sub system. All PubsubMessages published in a given PublishRequest must specify the same ordering_key value.*
+***<`ordering-key`>** - If non-empty, identifies related messages for which publish order should be respected. If a Subscription has enable_message_ordering set to true, messages published with the same non-empty ordering_key value will be delivered to subscribers in the order in which they are received by the pub/sub system. All PubsubMessages published in a given PublishRequest must specify the same ordering_key value.* -->
 
-## Validation Testing for Pub/Sub
+## Testing for gsub onramp (Pub/sub)
 
-For validating pub/sub, we need to make sure that there's guaranteed delivery and the messages are ordered when message_ordering is enabled for the subscription ie the sequence of messages received is preserved. So before sending the message to pub/sub, we add a field `count` in the event (json) that increments every time we send a message. This would be done in the outbound trickle file. To validate that all the messages are received in order, we have a validation logic in the inbound trickle file that checks if the difference between the `count` value of the current message and the previous message is one, the order is maintained.
+Google Cloud Pub/Sub guarantees delivery of all messages and also preserves the order of messages if the subscription has `message-ordering` set.
 
-We have 3 different ways for setting up the outbound trickle file the outbound trickle - using a [transient wal](https://docs.tremor.rs/workshop/examples/20_transient_gd/), [persistent wal](https://docs.tremor.rs/workshop/examples/21_persistent_gd/) and no wal.
+However, we wish to test the property of guranteed delivery and message-ordering for gsub in events like poor network connectivity. In order to test, before sending the message to pub/sub, we add a field `count` in the event (json) that increments every time we send a message. This would be done in the outbound trickle file. To validate that all the messages are received in order, we have a validation logic in the inbound trickle file that checks if the difference between the `count` value of the current message and the previous message is one, the order is maintained.
+
+For this purpose, we also use a write-ahead log or `wal` that builds on circuit breaker and acknowledgement mechanisms to provide guaranteed delivery. The write-ahead log is useful in situations where sources/onramps do not offer guaranteed delivery themselves, but the data being distributed downstream can benefit from protection against loss and duplication.
+
+We have 3 different configurations for the outbound trickle file - using a [transient wal](https://docs.tremor.rs/workshop/examples/20_transient_gd/), [persistent wal](https://docs.tremor.rs/workshop/examples/21_persistent_gd/) and no wal. The cofigurations are as follows:
 
 **No wal**
 
@@ -397,13 +415,26 @@ select {"data": event, "meta": $} from in into validate;
 select event from validate into out;
 ```
 
-For the validation, we run the source (onramp) and sink (offramp) separately.
+For the testing, we run the sink (a.k.a offramp) to send messages and source (a.k.a onramp) to receive messages separately.
+
+![Testing gsub](/img/blog/LFX-blog-jigyasa/validation-testing-image.png)
+
+
+---
+***Note:***
+*On killing the server and resarting right afterwards, we see that we lost 1 message (id 7) which was acknwledged inside tremor but not yet fully delivered to the console by gsub.*
+
+---
+
+In all the 3 cases, we obtain similar results. We observe that on restarting tremor, we may lose in flight messages (events) that were already acknowledged at the time the server went down and thus not fully delivered by the downstream system. We may also observe duplicate messages (messages being received more than once). However, the order of messages is preserved. 
+Hence, for the `gsub` onramp, a `wal` can assist with partial recovery of downstream system but it is not guarenteed to be lossless.
+
 
 ## Network Failure Recovery
 
 Testing in poor connectivity to see if guaranteed delivery works
 
-![Network Failure Recovery testing](/img/blog/LFX-Mentorship/network-failure-testing.png)
+![Network Failure Recovery testing](/img/blog/LFX-blog-jigyasa/network-failure-testing.png)
 
 The pivot point (where it just works) was observed when downlink and uplink packets dropped varies between 47%-50%. 
 
@@ -416,9 +447,9 @@ The pivot point (where it just works) was observed when downlink and uplink pack
 
 The Tremor community is absolutely great. As I was contributing to it as a part of my internship, I was lucky to have direct access to the Tremor developers working at Wayfair whenever I had any questions. We used to have a lot of meetings in the General Voice channel on discord with the Tremor developers and anyone could join in and ask questions, discuss ideas and share what they are working on. This used to be super helpful.
 
-Apart from that, every Tuesday we used to have office hours where everyone joins in and there used to be discussions on topics like: "Why did tremor go open source", "Good practices for contributing to open-source", and Q/As. They used to be a lot of fun.
+Apart from that, on the first Tuesday of every month we used to have office hours where everyone joins in and there used to be discussions on topics like: "Why did tremor go open source", "Good practices for contributing to open-source", and Q/As. They used to be a lot of fun.
 
-I am so grateful to my mentors: Darach, Heinz and Matthias for being super kind and always encouraging me to ask questions and clarifying all my doubts. Also, thanks to Ana for always being so nice and helping with my Rust errors. I thank them all for their time and help.
+I am so grateful to my mentors: Darach, Heinz and Matthias for being super kind and always encouraging me to ask questions and clarifying all my doubts. Also, thanks to Ana for always being so nice and helping with my Rust errors. They all are amazing and I thank them for their time and help.
 
 ## Final thoughts
 
