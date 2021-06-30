@@ -114,11 +114,9 @@ offramp:
     type: gcs
     codec: json
     postprocessors:
-      - lines 
       - gzip   
     preprocessors:
       - gzip 
-      - lines
     linked: true
     config:
       pem: <path-to-pem-file>
@@ -144,6 +142,8 @@ mapping:
   "/binding/example/passthrough":
     instance: "passthrough"
 ```
+The above config receives `json` on stdin, sends it to Google Cloud Storage service (and stdout) and writes the response received from GCS (since `linked: true`) to stdout.
+
 The instance variable (in the binding) is replaced by the value passthrough in the mapping upon deployment, so it is possible to define multiple bindings (deployments) for a single mapping (template).
 Supported preprocessors, that can be configured in yaml file can be found here: [preprocessors](https://docs.tremor.rs/artefacts/preprocessors/). Supported postprocessors and more about it: [postprocessors](https://docs.tremor.rs/artefacts/postprocessors/).
 Supported codecs, that can be configured in yaml file can be found here: [codecs](https://docs.tremor.rs/artefacts/codecs/)
@@ -167,7 +167,7 @@ Google Cloud Pub/Sub guarantees delivery of all messages, whether low throughput
 
 Pub/Sub guarantees at-least-once message delivery, which means that occasional duplicates are to be expected since we acknowledge the messages once they are received.
 
-The following is a usage example of the pub/sub connector. These are the files are required:
+The following is a usage example of the pub/sub connector. These are the files required:
 
 **outbound trickle:** 
 
@@ -193,7 +193,6 @@ offramp:
     type: gpub
     codec: json
     postprocessors:
-      - lines
       - gzip    
     linked: true 
     config:
@@ -209,7 +208,6 @@ onramp:
     codec: json  
     preprocessors:
       - gzip
-      - lines
     config:
       pem: <path-to-pem-file>
       subscription: '<name-of-subscription>'
@@ -231,9 +229,10 @@ mapping:
   "/binding/example/passthrough":
     instance: "passthrough"
 ```
+The above config receives `json` on stdin, sends it to Google Pub/sub service (and stdout) and writes the response received from Google Pub/sub (since `linked` is set to true) to stdout. At the same time, it also receives the messages for the configured subscription from Google pub/sub and writes those messages to stdout.
 
 Supported preprocessors, that can be configured in yaml file can be found here: [preprocessors](https://docs.tremor.rs/artefacts/preprocessors/).
-Supported postprocessors and more about it: [postprocessors](https://docs.tremor.rs/artefacts/postprocessors/).
+Supported postprocessors and more about it: [postprocessors](https://docs.tremor.rs/artefacts/postprocessors/). 
 Supported codecs, that can be configured in yaml file can be found here: [codecs](https://docs.tremor.rs/artefacts/codecs/)
 
 ![Tremor Dot Diagram](/img/blog/LFX-blog-jigyasa/dot-diagram.png)
@@ -432,11 +431,9 @@ Hence, for the `gsub` onramp, a `wal` can assist with partial recovery of downst
 
 ## Network Failure Recovery
 
-Testing in poor connectivity to see if guaranteed delivery works
-
 ![Network Failure Recovery testing](/img/blog/LFX-blog-jigyasa/network-failure-testing.png)
 
-The pivot point (where it just works) was observed when downlink and uplink packets dropped varies between 47%-50%. 
+While testing in poor connectivity, the pivot point (where it just works) was observed when downlink and uplink packets dropped varies between 47%-50%. 
 
 ## Use of Connectors
 
