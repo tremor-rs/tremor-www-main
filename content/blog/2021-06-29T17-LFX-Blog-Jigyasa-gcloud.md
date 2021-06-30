@@ -1,11 +1,11 @@
 +++
 date = "2021-06-29T17:25:00+01:00"
 title = "Jigyasa's LFX spring Mentorship experience report"
-tags = ["perf"]
+tags = []
 categories = ["general"]
 draft = false
 description = "Experience contributing to Tremor and work overview"
-weight = -20200306
+weight = -20210629
 +++ 
 
 
