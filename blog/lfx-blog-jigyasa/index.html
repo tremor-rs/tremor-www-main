@@ -1,0 +1,213 @@
+<!doctype html><html lang=en-us><head><meta name=generator content="Hugo 0.84.3"><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><title>Jigyasa's LFX spring Mentorship experience report</title><meta name=description content="Experience contributing to Tremor and work overview"><meta name=author content="The Tremor Team"><meta property="og:title" content="Jigyasa's LFX spring Mentorship experience report"><meta property="og:description" content="Experience contributing to Tremor and work overview"><meta property="og:type" content="article"><meta property="og:url" content="/blog/lfx-blog-jigyasa/"><meta property="article:section" content="blog"><meta property="article:published_time" content="2021-06-29T17:25:00+01:00"><meta property="article:modified_time" content="2021-06-29T17:25:00+01:00"><link rel=canonical href=/blog/lfx-blog-jigyasa/><link rel="shortcut icon" type=image/png href=/img/favicons/logo.png><link href=/css/font.css rel=stylesheet type=text/css><link href=/css/kube.css rel=stylesheet type=text/css><link href=/css/kube.legenda.css rel=stylesheet type=text/css><link href=/css/highlight.css rel=stylesheet type=text/css><link href=/css/master.css rel=stylesheet type=text/css><link href=/css/kube.demo.css rel=stylesheet type=text/css><link href=/css/custom.css rel=stylesheet type=text/css><link href=/css/syntax.css rel=stylesheet type=text/css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css><script src=/js/jquery-2.1.4.min.js type=text/javascript></script><script type=text/javascript src=/js/tocbot.min.js></script></head><body class=page-kube><header><div class=show-sm><div id=nav-toggle-box><div id=nav-toggle-brand><a href=/><img src=/logo-minimalism.png width=32 height=32 alt=Tremor></a></div><a data-component=toggleme data-target=#top href=# id=nav-toggle><i class=kube-menu></i></a></div></div><div class=hide-sm id=top><div id=top-brand><a href=/ title=home><img src=/img/common/logo.png height=64 width=285 alt=Tremor></a></div><nav id=top-nav-main><ul><li><a href=/blog/>Blog</a></li><li><a href=/faq/>Faq</a></li><li><a href=/getting-started/>Getting Started</a></li><li><a href=https://docs.tremor.rs/>Docs</a></li><li><a href=https://rfcs.tremor.rs/>RFCs</a></li><li><a href=/community/>Community</a></li><li><a href=/governance/>Governance</a></li><li><a href=https://bit.ly/tremor-discord>Community Chat</a></li></ul></nav><nav id=top-nav-extra><ul></ul></nav></div><a class=github-fork-ribbon href=https://github.com/tremor-rs/tremor-runtime data-ribbon="Fork me on GitHub" title="Fork me on GitHub">Fork me on GitHub</a></header><main><div class=push-center itemscope itemtype=http://schema.org/BlogPosting><meta itemprop=name content="Jigyasa's LFX spring Mentorship experience report"><meta itemprop=description content="Experience contributing to Tremor and work overview"><meta itemprop=datePublished content="2021-06-29T17:25:00+01:00"><meta itemprop=dateModified content="2021-06-29T17:25:00+01:00"><meta itemprop=wordCount content="2257"><meta itemprop=keywords content="perf,"><div id=hero><h2 itemprop=headline>Jigyasa's LFX spring Mentorship experience report</h2><blockquote itemprop=description>Experience contributing to Tremor and work overview</blockquote><time class=post-time><span class=icon><i class="fa fa-clock-o" aria-hidden=true></i></span>
+<span>11 minute read</span>
+<span class=icon><i class="fa fa-pencil" aria-hidden=true></i></span>
+Published: <time datetime=2021-06-29T17:25:00+01:00>29 Jun, 2021</time></time></div><div id=post-box><div id=post itemprop=articleBody><h3 id=introduction>Introduction</h3><p>Hello folks! I&rsquo;m Jigyasa, a final-year computer science engineering student at Indira Gandhi Delhi Technical University for Women pursuing my bachelor&rsquo;s in Technology. This blog is about my experience contributing to <a href=https://www.tremor.rs/>Tremor</a> as part of the LFX Mentorship program.</p><h3 id=learning-about-tremor>Learning about Tremor</h3><p>Tremor is an event processing system for unstructured data with rich support for structural pattern matching, filtering, and transformation. It is built for users that have a high message volume to deal with and want to build pipelines to process, route, or limit this event stream. It has a scripting language called tremor-script and a query language as well called tremor-query or trickle.</p><p>I had never worked on an event processing system before this internship. In fact, my first major contribution to open-source was through this mentorship program. To get started with it, my mentor <a href="https://www.linkedin.com/in/darach-ennis-789866?lipi=urn%3Ali%3Apage%3Ad_flagship3_search_srp_all%3BnRZIYeLfRAWJpWsDNlzweA%3D%3D">Darach Ennis</a>, suggested me some documents that helped me learn more about it:</p><p><a href=https://docs.tremor.rs/overview/>https://docs.tremor.rs/overview/</a></p><p><a href=https://docs.tremor.rs/course/#/2>https://docs.tremor.rs/course</a></p><p>Apart from that, learning more about the tremor-query, tremor-script, and going through the workshops in the docs can be really helpful.</p><p>The codebase of Tremor is in Rust, and since I had no prior experience with Rust, I started learning the language.</p><h3 id=learning-rust>Learning Rust</h3><p>Getting started with Rust was very intimidating. It involved working with things like memory management, borrow checker, lifetimes, and the expressive types which was very new to me and hence, confusing</p><p>While getting started with a new language, I try to follow along some interactive tutorials/videos. These are some resources that I found helpful:</p><p><a href=https://serokell.io/blog/learn-rust>https://serokell.io/blog/learn-rust</a></p><p><a href=https://fasterthanli.me/articles/a-half-hour-to-learn-rust>https://fasterthanli.me/articles/a-half-hour-to-learn-rust</a></p><p><a href=https://doc.rust-lang.org/book/>https://doc.rust-lang.org/book/</a></p><p>However, while coding I used to run into a lot of errors. My mentor suggested me a good practice which is to document those errors and always make good notes of anything and everything I learn. So the next time I come across something similar, I can just refer to my notes instead of searching that up on the internet. I used to document the little things like a new <code>vi</code> or <code>git</code> command that I learned and found helpful. It&rsquo;s also very important to keep those notes organized so that it&rsquo;s faster and easier to find what you&rsquo;re looking for. Compiling notes of all the new things learned in a day can be very helpful.</p><p>At times when I used to get stuck with some Rust errors, I used to reach out to my mentor or anyone from the Tremor community and they would help me. Apart from that, these discord servers can be of great help too:</p><p><a href=https://discord.gg/rust-lang-community>Rust programming language community server</a></p><p><a href=https://discord.gg/4BUXJEB2>Firepit</a></p><h3 id=my-project>My project</h3><p>My task during the internship was to add support for the Google Cloud connectors in Tremor. I worked on adding the Google Cloud Storage and Google Cloud Pub/Sub connectors. A detailed description of it can be found here:</p><p><a href=https://github.com/tremor-rs/tremor-runtime/issues/724>https://github.com/tremor-rs/tremor-runtime/issues/724</a></p><p>Before explaining more about it, here&rsquo;s what a connector involves:</p><p><strong>Sources:</strong> Ingest data from the outside world and deserialise to events ( onramps )</p><p><strong>Sinks:</strong> Send serialised events to the outside world ( offramps )</p><p>Connectors serve the purpose of sending events to and receiving events from the outside world. A connector can be an event <code>source</code> (a.k.a. <code>onramp</code>) or an event <code>sink</code> (a.k.a. <code>offramp</code>) or both.</p><p><img src="/img/blog/LFX-blog-jigyasa/connector.png?raw=true" alt=Connector></p><h4 id=google-cloud-storage-connector>Google Cloud Storage connector:</h4><p>I wrote a GCS sink that can issue the basic GCS operations such as list buckets and objects, create, insert and delete objects from the Google Cloud Platform cloud storage service. The docs can be found here: <a href=https://docs.tremor.rs/artefacts/offramps/#gcs>GCS offramp docs</a></p><h4 id=google-cloud-pubsub-connector>Google Cloud Pub/Sub connector:</h4><p>The gpub sink can issue the operation of sending a message to a Google Cloud Pub/Sub topic. It also allows creating a subscription to a topic to receive messages in it, with the option to enable/disable message ordering. The gsub source allows receiving messages via a subscription in batches as well as one after another. The docs can be found here:
+<a href=https://docs.tremor.rs/artefacts/offramps/#gpub>gpub offramp</a> and <a href=https://docs.tremor.rs/artefacts/onramps/#gsub>gsub onramp</a></p><h2 id=walk-through-guide>Walk-Through Guide</h2><p>To get started, you need a service account on GCP and you will need a GCP pem file for certificates authentication and a service token json file.</p><p>The command used to get the service token <code>json</code> file:</p><div class=highlight><pre class=chroma><code class=language-bash data-lang=bash>gcloud iam service-accounts keys create key-file.json -iam-account<span class=o>=</span>&lt;iam-account-name&gt;@&lt;project-id&gt;.iam.gserviceaccount.com
+</code></pre></div><p>or</p><div class=highlight><pre class=chroma><code class=language-bash data-lang=bash>gcloud iam service-accounts keys create key-file.json -iam-account<span class=o>=</span>&lt;mail-id-of-service-account&gt;
+</code></pre></div><p>Go to GCP dashboard → IAM & Admin → Service Accounts and get the email-id mentioned which is the <code>&lt;mail-id-of-service-account></code></p><h3 id=google-cloud-storage>Google Cloud Storage</h3><p>The following is a usage example of the gcs connector. The following files are required:</p><p><strong>outbound.trickle</strong></p><pre><code class=language-trickle data-lang=trickle>select event from in into out
+</code></pre><p><strong>inbound.trickle</strong></p><pre><code class=language-trickle data-lang=trickle>select event from in into out
+</code></pre><p><strong>test.yaml</strong></p><div class=highlight><pre class=chroma><code class=language-yaml data-lang=yaml><span class=nt>offramp</span><span class=p>:</span><span class=w>
+</span><span class=w>  </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>stdout</span><span class=w>
+</span><span class=w>    </span><span class=nt>type</span><span class=p>:</span><span class=w> </span><span class=l>stdout</span><span class=w>
+</span><span class=w>    </span><span class=nt>codec</span><span class=p>:</span><span class=w> </span><span class=l>json</span><span class=w>
+</span><span class=w>    </span><span class=nt>config</span><span class=p>:</span><span class=w>
+</span><span class=w>  </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>gcs</span><span class=w>
+</span><span class=w>    </span><span class=nt>type</span><span class=p>:</span><span class=w> </span><span class=l>gcs</span><span class=w>
+</span><span class=w>    </span><span class=nt>codec</span><span class=p>:</span><span class=w> </span><span class=l>json</span><span class=w>
+</span><span class=w>    </span><span class=nt>postprocessors</span><span class=p>:</span><span class=w>
+</span><span class=w>      </span>- <span class=l>gzip   </span><span class=w>
+</span><span class=w>    </span><span class=nt>preprocessors</span><span class=p>:</span><span class=w>
+</span><span class=w>      </span>- <span class=l>gzip </span><span class=w>
+</span><span class=w>    </span><span class=nt>linked</span><span class=p>:</span><span class=w> </span><span class=kc>true</span><span class=w>
+</span><span class=w>    </span><span class=nt>config</span><span class=p>:</span><span class=w>
+</span><span class=w>      </span><span class=nt>pem</span><span class=p>:</span><span class=w> </span><span class=l>&lt;path-to-pem-file&gt;</span><span class=w>
+</span><span class=w></span><span class=nt>onramp</span><span class=p>:</span><span class=w>
+</span><span class=w>  </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>stdin</span><span class=w>
+</span><span class=w>    </span><span class=nt>type</span><span class=p>:</span><span class=w> </span><span class=l>file</span><span class=w>
+</span><span class=w>    </span><span class=nt>codec</span><span class=p>:</span><span class=w> </span><span class=l>json</span><span class=w>
+</span><span class=w>    </span><span class=nt>config</span><span class=p>:</span><span class=w>
+</span><span class=w>      </span><span class=nt>source</span><span class=p>:</span><span class=w> </span><span class=l>/dev/stdin   </span><span class=w>
+</span><span class=w></span><span class=nt>binding</span><span class=p>:</span><span class=w>
+</span><span class=w>  </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>example</span><span class=w>
+</span><span class=w>    </span><span class=nt>links</span><span class=p>:</span><span class=w>
+</span><span class=w>      </span><span class=s1>&#39;/onramp/stdin/{instance}/out&#39;</span><span class=p>:</span><span class=w>
+</span><span class=w>        </span>- <span class=s1>&#39;/pipeline/outbound/{instance}/in&#39;</span><span class=w>
+</span><span class=w>      </span><span class=s1>&#39;/pipeline/outbound/{instance}/out&#39;</span><span class=p>:</span><span class=w>
+</span><span class=w>        </span>- <span class=s1>&#39;/offramp/stdout/{instance}/in&#39;</span><span class=w>
+</span><span class=w>        </span>- <span class=s1>&#39;/offramp/gcs/{instance}/in&#39;</span><span class=w>
+</span><span class=w>      </span><span class=s1>&#39;/offramp/gcs/{instance}/out&#39;</span><span class=p>:</span><span class=w>
+</span><span class=w>        </span>- <span class=s1>&#39;/pipeline/inbound/{instance}/in&#39;</span><span class=w>
+</span><span class=w>      </span><span class=s1>&#39;/pipeline/inbound/{instance}/out&#39;</span><span class=p>:</span><span class=w>
+</span><span class=w>        </span>- <span class=s1>&#39;/offramp/stdout/{instance}/in&#39;</span><span class=w>
+</span><span class=w></span><span class=nt>mapping</span><span class=p>:</span><span class=w>
+</span><span class=w>  </span><span class=s2>&#34;/binding/example/passthrough&#34;</span><span class=p>:</span><span class=w>
+</span><span class=w>    </span><span class=nt>instance</span><span class=p>:</span><span class=w> </span><span class=s2>&#34;passthrough&#34;</span><span class=w>
+</span></code></pre></div><p>The above config receives <code>json</code> on stdin, sends it to Google Cloud Storage service (and stdout) and writes the response received from GCS (since <code>linked: true</code>) to stdout.</p><p>The instance variable (in the binding) is replaced by the value passthrough in the mapping upon deployment, so it is possible to define multiple bindings (deployments) for a single mapping (template).
+Supported preprocessors, that can be configured in yaml file can be found here: <a href=https://docs.tremor.rs/artefacts/preprocessors/>preprocessors</a>. Supported postprocessors and more about it: <a href=https://docs.tremor.rs/artefacts/postprocessors/>postprocessors</a>.
+Supported codecs, that can be configured in yaml file can be found here: <a href=https://docs.tremor.rs/artefacts/codecs/>codecs</a></p><ul><li>Set the env variable</li></ul><div class=highlight><pre class=chroma><code class=language-bash data-lang=bash><span class=nb>export</span> <span class=nv>GOOGLE_APPLICATION_CREDENTIALS</span><span class=o>=</span><span class=s2>&#34;&lt;path-to-service-token-json-file&gt;&#34;</span>
+</code></pre></div><ul><li>Command used to run tremor:</li></ul><div class=highlight><pre class=chroma><code class=language-bash data-lang=bash>tremor server run -f outbound.trickle inbound.trickle test.yaml <span class=p>|</span> jq .
+</code></pre></div><p>For a detailed guide on the operations that can be performed, refer the <a href=https://docs.tremor.rs/artefacts/offramps/#gcs>docs</a>.</p><h3 id=google-cloud-pubsub>Google Cloud Pub/sub</h3><p>Google Cloud Pub/Sub guarantees delivery of all messages, whether low throughput or high throughput, so there should be no concern about messages being lost.</p><p>Pub/Sub guarantees at-least-once message delivery, which means that occasional duplicates are to be expected since we acknowledge the messages once they are received.</p><p>The following is a usage example of the pub/sub connector. These are the files required:</p><p><strong>outbound trickle:</strong></p><pre><code class=language-trickle data-lang=trickle>select event from in into out
+</code></pre><p><strong>inbound.trickle:</strong></p><pre><code class=language-trickle data-lang=trickle>select {&quot;data&quot;: event, &quot;meta&quot;: $} from in into out;
+</code></pre><p><strong>test.yaml:</strong></p><div class=highlight><pre class=chroma><code class=language-yaml data-lang=yaml><span class=nt>offramp</span><span class=p>:</span><span class=w>
+</span><span class=w>  </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>stdout</span><span class=w>
+</span><span class=w>    </span><span class=nt>type</span><span class=p>:</span><span class=w> </span><span class=l>stdout</span><span class=w>
+</span><span class=w>    </span><span class=nt>codec</span><span class=p>:</span><span class=w> </span><span class=l>json</span><span class=w>
+</span><span class=w>    </span><span class=nt>config</span><span class=p>:</span><span class=w>
+</span><span class=w>  </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>gpub</span><span class=w>
+</span><span class=w>    </span><span class=nt>type</span><span class=p>:</span><span class=w> </span><span class=l>gpub</span><span class=w>
+</span><span class=w>    </span><span class=nt>codec</span><span class=p>:</span><span class=w> </span><span class=l>json</span><span class=w>
+</span><span class=w>    </span><span class=nt>postprocessors</span><span class=p>:</span><span class=w>
+</span><span class=w>      </span>- <span class=l>gzip    </span><span class=w>
+</span><span class=w>    </span><span class=nt>linked</span><span class=p>:</span><span class=w> </span><span class=kc>true</span><span class=w> 
+</span><span class=w>    </span><span class=nt>config</span><span class=p>:</span><span class=w>
+</span><span class=w>      </span><span class=nt>pem</span><span class=p>:</span><span class=w> </span><span class=l>&lt;path-to-pem-file&gt;</span><span class=w>
+</span><span class=w></span><span class=nt>onramp</span><span class=p>:</span><span class=w>
+</span><span class=w>  </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>stdin</span><span class=w>
+</span><span class=w>    </span><span class=nt>type</span><span class=p>:</span><span class=w> </span><span class=l>file</span><span class=w>
+</span><span class=w>    </span><span class=nt>codec</span><span class=p>:</span><span class=w> </span><span class=l>json</span><span class=w>
+</span><span class=w>    </span><span class=nt>config</span><span class=p>:</span><span class=w>
+</span><span class=w>      </span><span class=nt>source</span><span class=p>:</span><span class=w> </span><span class=l>/dev/stdin  </span><span class=w>
+</span><span class=w>  </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>gsub</span><span class=w>
+</span><span class=w>    </span><span class=nt>type</span><span class=p>:</span><span class=w> </span><span class=l>gsub</span><span class=w>
+</span><span class=w>    </span><span class=nt>codec</span><span class=p>:</span><span class=w> </span><span class=l>json  </span><span class=w>
+</span><span class=w>    </span><span class=nt>preprocessors</span><span class=p>:</span><span class=w>
+</span><span class=w>      </span>- <span class=l>gzip</span><span class=w>
+</span><span class=w>    </span><span class=nt>config</span><span class=p>:</span><span class=w>
+</span><span class=w>      </span><span class=nt>pem</span><span class=p>:</span><span class=w> </span><span class=l>&lt;path-to-pem-file&gt;</span><span class=w>
+</span><span class=w>      </span><span class=nt>subscription</span><span class=p>:</span><span class=w> </span><span class=s1>&#39;&lt;name-of-subscription&gt;&#39;</span><span class=w>
+</span><span class=w></span><span class=nt>binding</span><span class=p>:</span><span class=w>
+</span><span class=w>  </span>- <span class=nt>id</span><span class=p>:</span><span class=w> </span><span class=l>example</span><span class=w>
+</span><span class=w>    </span><span class=nt>links</span><span class=p>:</span><span class=w>
+</span><span class=w>      </span><span class=s1>&#39;/onramp/stdin/{instance}/out&#39;</span><span class=p>:</span><span class=w>
+</span><span class=w>        </span>- <span class=s1>&#39;/pipeline/outbound/{instance}/in&#39;</span><span class=w>
+</span><span class=w>      </span><span class=s1>&#39;/pipeline/outbound/{instance}/out&#39;</span><span class=p>:</span><span class=w>
+</span><span class=w>        </span>- <span class=s1>&#39;/offramp/stdout/{instance}/in&#39;</span><span class=w>
+</span><span class=w>        </span>- <span class=s1>&#39;/offramp/gpub/{instance}/in&#39;</span><span class=w>
+</span><span class=w>      </span><span class=s1>&#39;/offramp/gpub/{instance}/out&#39;</span><span class=p>:</span><span class=w>
+</span><span class=w>        </span>- <span class=s1>&#39;/pipeline/inbound/{instance}/in&#39;</span><span class=w>
+</span><span class=w>      </span><span class=s1>&#39;/pipeline/inbound/{instance}/out&#39;</span><span class=p>:</span><span class=w>
+</span><span class=w>        </span>- <span class=s1>&#39;/offramp/stdout/{instance}/in&#39;</span><span class=w>
+</span><span class=w>      </span><span class=s1>&#39;/onramp/gsub/{instance}/out&#39;</span><span class=p>:</span><span class=w>
+</span><span class=w>        </span>- <span class=s1>&#39;/pipeline/inbound/{instance}/in&#39;</span><span class=w>
+</span><span class=w></span><span class=nt>mapping</span><span class=p>:</span><span class=w>
+</span><span class=w>  </span><span class=s2>&#34;/binding/example/passthrough&#34;</span><span class=p>:</span><span class=w>
+</span><span class=w>    </span><span class=nt>instance</span><span class=p>:</span><span class=w> </span><span class=s2>&#34;passthrough&#34;</span><span class=w>
+</span></code></pre></div><p>The above config receives <code>json</code> on stdin, sends it to Google Pub/sub service (and stdout) and writes the response received from Google Pub/sub (since <code>linked</code> is set to true) to stdout. At the same time, it also receives the messages for the configured subscription from Google pub/sub and writes those messages to stdout.</p><p>Supported preprocessors, that can be configured in yaml file can be found here: <a href=https://docs.tremor.rs/artefacts/preprocessors/>preprocessors</a>.
+Supported postprocessors and more about it: <a href=https://docs.tremor.rs/artefacts/postprocessors/>postprocessors</a>.
+Supported codecs, that can be configured in yaml file can be found here: <a href=https://docs.tremor.rs/artefacts/codecs/>codecs</a></p><p><img src=/img/blog/LFX-blog-jigyasa/dot-diagram.png alt="Tremor Dot Diagram"></p><ul><li>Create a topic using the following <code>gcloud</code> command:</li></ul><div class=highlight><pre class=chroma><code class=language-bash data-lang=bash>gcloud pubsub topics create &lt;topic-name&gt;
+</code></pre></div><ul><li>Set the env variable</li></ul><div class=highlight><pre class=chroma><code class=language-bash data-lang=bash><span class=nb>export</span> <span class=nv>GOOGLE_APPLICATION_CREDENTIALS</span><span class=o>=</span><span class=s2>&#34;&lt;path-to-service-token-json-file&gt;&#34;</span>
+</code></pre></div><ul><li>Command used to run tremor:</li></ul><div class=highlight><pre class=chroma><code class=language-bash data-lang=bash>tremor server run -f outbound.trickle inbound.trickle test.yaml <span class=p>|</span> jq .
+</code></pre></div><p>Refer to the <a href=https://docs.tremor.rs/artefacts/offramps/#gpub>gpub</a> and <a href=https://docs.tremor.rs/artefacts/onramps/#gsub>gsub</a> docs to perform opertaions.</p><h2 id=testing-for-gsub-onramp-pubsub>Testing for gsub onramp (Pub/sub)</h2><p>Google Cloud Pub/Sub guarantees delivery of all messages and also preserves the order of messages if the subscription has <code>message-ordering</code> set.</p><p>However, we wish to test the property of guranteed delivery and message-ordering for gsub in events like poor network connectivity. In order to test, before sending the message to pub/sub, we add a field <code>count</code> in the event (json) that increments every time we send a message. This would be done in the outbound trickle file. To validate that all the messages are received in order, we have a validation logic in the inbound trickle file that checks if the difference between the <code>count</code> value of the current message and the previous message is one, the order is maintained.</p><p>For this purpose, we also use a write-ahead log or <code>wal</code> that builds on circuit breaker and acknowledgement mechanisms to provide guaranteed delivery. The write-ahead log is useful in situations where sources/onramps do not offer guaranteed delivery themselves, but the data being distributed downstream can benefit from protection against loss and duplication.</p><p>We have 3 different configurations for the outbound trickle file - using a <a href=https://docs.tremor.rs/workshop/examples/20_transient_gd/>transient wal</a>, <a href=https://docs.tremor.rs/workshop/examples/21_persistent_gd/>persistent wal</a> and no wal. The cofigurations are as follows:</p><p><strong>No wal</strong></p><pre><code class=language-trickle data-lang=trickle>define script counter
+script
+  let count = match state==null of
+    case true =&gt;
+      0
+    default =&gt;
+      state.count + 1
+  end;
+
+  let state = {&quot;count&quot;: count};
+  {&quot;command&quot;: &quot;send_message&quot;, &quot;project&quot;:&quot;&lt;project-id&gt;&quot;, &quot;topic&quot;:&quot;&lt;topic-name&gt;&quot;, &quot;data&quot;: merge event of {&quot;count&quot;: state.count} end, &quot;ordering_key&quot;: &quot;&lt;ordering-key&gt;&quot;}
+end;
+
+create script counter;
+
+select event from in into counter;
+select event from counter into out;
+</code></pre><p><strong>Transient-wal</strong></p><pre><code class=language-trickle data-lang=trickle>define qos::wal operator in_memory_wal
+with
+  read_count = 20,
+  max_elements = 1000, # Capacity limit of 1000 stored events
+  max_bytes = 10485760 # Capacity limit of 1MB of events
+end;
+
+create operator in_memory_wal;
+
+define script counter
+script
+  let count = match state==null of
+    case true =&gt;
+      0
+    default =&gt;
+      state.count + 1
+  end;
+
+  let state = {&quot;count&quot;: count};
+  {&quot;command&quot;: &quot;send_message&quot;, &quot;project&quot;:&quot;&lt;project-id&gt;&quot;, &quot;topic&quot;:&quot;&lt;topic-name&gt;&quot;, &quot;data&quot;: merge event of {&quot;count&quot;: state.count} end, &quot;ordering_key&quot;: &quot;&lt;ordering-key&gt;&quot;}
+end;
+
+create script counter;
+
+select event from in into counter;
+select event from counter into in_memory_wal;
+select event from in_memory_wal into out;
+</code></pre><p><strong>Persistent-wal</strong></p><pre><code class=language-trickle data-lang=trickle>define qos::wal operator on_disk_wal
+with
+  read_count = 20,
+  max_elements = 1000, # Capacity limit of 1000 stored events
+  max_bytes = 10485760 # Capacity limit of 1MB of events
+end;
+create operator on_disk_wal;
+
+define script counter
+script
+  let count = match state==null of
+    case true =&gt;
+      0
+    default =&gt;
+      state.count + 1
+  end;
+
+  let state = {&quot;count&quot;: count};
+  {&quot;command&quot;: &quot;send_message&quot;, &quot;project&quot;:&quot;&lt;project-id&gt;&quot;, &quot;topic&quot;:&quot;&lt;topic-name&gt;&quot;, &quot;data&quot;: merge event of {&quot;count&quot;: state.count} end, &quot;ordering_key&quot;: &quot;&lt;ordering-key&gt;&quot;}
+end;
+
+create script counter;
+
+select event from in into counter;
+select event from counter into on_disk_wal;
+select event from on_disk_wal into out;
+</code></pre><p>In the <strong>inbound</strong> trickle, we have the validation logic as follows:</p><pre><code class=language-trickle data-lang=trickle>define script validate
+script
+  match state == null of
+    case true =&gt;
+      let valid = match event.data.count == 0 of 
+        case true =&gt;
+          true      
+        default =&gt;
+          false
+      end,
+      let state = {&quot;prev&quot;: event.data.count},
+      {&quot;response&quot;: event, &quot;valid&quot;: valid} 
+      
+    default =&gt;
+      let valid = match state.prev + 1 == event.data.count of 
+        case true =&gt;
+          true
+        default =&gt;
+          false
+      end,
+      let state = {&quot;prev&quot;: event.data.count},
+      
+      {&quot;response&quot;:event, &quot;valid&quot;: valid}
+  end;
+end;
+
+create script validate;
+
+select {&quot;data&quot;: event, &quot;meta&quot;: $} from in into validate;
+select event from validate into out;
+</code></pre><p>For the testing, we run the sink (a.k.a offramp) to send messages and source (a.k.a onramp) to receive messages separately.</p><p><img src=/img/blog/LFX-blog-jigyasa/validation-testing-image.png alt="Testing gsub"></p><hr><p><em><strong>Note:</strong></em>
+<em>On killing the server and resarting right afterwards, we see that we lost 1 message (id 7) which was acknwledged inside tremor but not yet fully delivered to the console by gsub.</em></p><hr><p>In all the 3 cases, we obtain similar results. We observe that on restarting tremor, we may lose in flight messages (events) that were already acknowledged at the time the server went down and thus not fully delivered by the downstream system. We may also observe duplicate messages (messages being received more than once). However, the order of messages is preserved.
+Hence, for the <code>gsub</code> onramp, a <code>wal</code> can assist with partial recovery of downstream system but it is not guarenteed to be lossless.</p><h2 id=network-failure-recovery>Network Failure Recovery</h2><p><img src=/img/blog/LFX-blog-jigyasa/network-failure-testing.png alt="Network Failure Recovery testing"></p><p>While testing in poor connectivity, the pivot point (where it just works) was observed when downlink and uplink packets dropped varies between 47%-50%.</p><h2 id=use-of-connectors>Use of Connectors</h2><ul><li>Bulk batch rolling event/log storage to GCS</li><li>Distribution of openTelemetry logs/trace/metrics over GCP pub/sub</li></ul><h2 id=the-tremor-community>The Tremor community</h2><p>The Tremor community is absolutely great. As I was contributing to it as a part of my internship, I was lucky to have direct access to the Tremor developers working at Wayfair whenever I had any questions. We used to have a lot of meetings in the General Voice channel on discord with the Tremor developers and anyone could join in and ask questions, discuss ideas and share what they are working on. This used to be super helpful.</p><p>Apart from that, on the first Tuesday of every month we used to have office hours where everyone joins in and there used to be discussions on topics like: &ldquo;Why did tremor go open source&rdquo;, &ldquo;Good practices for contributing to open-source&rdquo;, and Q/As. They used to be a lot of fun.</p><p>I am so grateful to my mentors: Darach, Heinz and Matthias for being super kind and always encouraging me to ask questions and clarifying all my doubts. Also, thanks to Ana for always being so nice and helping with my Rust errors. They all are amazing and I thank them for their time and help.</p><h2 id=final-thoughts>Final thoughts</h2><p>It was an overall great journey contributing to Tremor. I learned so much in these 3 months' time with the support of my mentors. I&rsquo;m very grateful to CNCF for organizing this mentorship program as it gave me an opportunity to learn about event processing, distributed systems, Rust, Cloud-Native technologies, etc. I wouldn&rsquo;t have learned so much in these 3 months' time had I not been a part of this mentorship program. It was definitely a fun learning experience.</p></div><div><p>Published
+by <span itemprop=author>The Tremor Team</span>
+<time datetime=2021-06-29T17:25:00+01:00>29 Jun, 2021</time>
+in <span itemprop=articleSection><a href=/categories/general/>general</a></span>
+and tagged <a href=/tags/perf/>perf</a>
+using <span itemprop=wordCount>2257</span> words.</p><aside><heade><strong>Related Content</strong></header><hr><ul><li><a href=/blog/influx-perf/>Improving our influx parser - a story in four acts</a> &ndash; 9 minutes</ul></aside></div></div></div></main><footer><footer id=footer><nav><ul><li><a href=https://docs.tremor.rs/CodeOfConduct/>Code of Conduct</a></li><li><a href=https://www.tremor.rs/>The Tremor Project</a></li><li><a href=/blog/>Blog</a></li><li><a href=https://twitter.com/TremorDEBS>@TremorDEBS</a></li><li><a href=https://www.cncf.io/><img src=/img/cncf-color.svg alt="CNCF Logo" style=width:100px></a></li></ul></nav><p>&copy; 2020 The Tremor Contributors. Content under ASL 2 License. Theme
+under MIT License.<br>Copyright The Linux Foundation. All rights reserved. The Linux Foundation
+has registered trademarks and uses trademarks. For a list of trademarks of
+The Linux Foundation, please see our
+<a href=https://www.linuxfoundation.org/trademark-usage/>Trademark Usage</a>
+page.<br>We are a
+<a href=https://www.cncf.io/sandbox-projects/>Cloud Native Computing Foundation sandbox project</a></p></footer></footer><script src=/js/kube.js type=text/javascript></script><script src=/js/kube.legenda.js type=text/javascript></script><script src=/js/master.js type=text/javascript></script></body></html>
