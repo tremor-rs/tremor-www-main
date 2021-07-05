@@ -22,7 +22,7 @@ can be found [here](https://github.com/tremor-rs/tremor-runtime/issues/12).
 
 ### Syslog codec (support via UDP)
 
-The syslog codec encodes and decodes sylog messages (IETF and BSD format) to and from `value` respectively. Tremor can now receive syslog data via UDP (onramp) and turn syslog messages into structured events. Also, structured events can be turned into textual syslog messages and send out via UDP (offramp).
+The syslog codec encodes and decodes sylog messages (IETF and BSD format) to and from `Value` respectively. Tremor can now receive syslog data via UDP (onramp) and turn syslog messages into structured events. Also, structured events can be turned into textual syslog messages and send out via UDP (offramp).
 
 For example, the following Syslog message 
 
@@ -31,7 +31,7 @@ For example, the following Syslog message
 application event log entry..."
 ```
 
-get translates to:
+gets translated to:
 
 ```json
 {
@@ -68,11 +68,11 @@ The implementation can be found [here](https://github.com/tremor-rs/tremor-runti
 
 ### TLS support for TCP
 
-Unlike UDP, Tremor did not support TLS over TCP onramp, which was needed to add. This work can be broadly divided into two:
+Unlike UDP, Tremor did not support TLS over TCP onramp, which was needed to add. This work can be broadly divided into two parts:
 
 ** Add support for receiving TLS encrypted data via TCP onramp **
 
-`tls` option was added to the tcp onram configuration options which addresses the keys and certificate required for authentiction.
+`tls` option was added to the tcp onramp configuration options which addresses the keys and certificate required for authentiction.
 
 An example of TCP onramp config with TLS is as follows:
 
@@ -95,7 +95,7 @@ The code can be found [here](https://github.com/tremor-rs/tremor-runtime/pull/10
 
 ** Add support for sending TLS encrypted data via TCP offramp **
 
-`tls` option added to offramp tls config contains either the tls config or boolean value indiacting the use of TLS stream. If false is provided then the default TCP stream will be used and if true is provided then TLS stream will be used with default certificates and domain same as hostname. Other option is to provide tls config with `domain` and `cafile`. In case of no domain, hostname will be used.
+`tls` option added to offramp tls config contains either the tls config or boolean value indiacting the use of TLS session for transport level encryption. If false is provided then the default TCP stream will be used and if true is provided then TLS stream will be used with default certificates and domain same as hostname. Other option is to provide tls config with `domain` and `cafile`. In case of no domain, hostname will be used.
 
 An example of TCP offramp config with TLS:
 
