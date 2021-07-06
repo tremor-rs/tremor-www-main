@@ -1,6 +1,6 @@
 +++
 date = "2021-07-05T11:04:54+00:00"
-title = "LFX spring Mentorship experience report -Nupur"
+title = "LFX Spring Mentorship Experience Report - Support for the Syslog Protocol"
 tags = []
 categories = ["general"]
 draft = false
@@ -106,7 +106,7 @@ The code can be found [here](https://github.com/tremor-rs/tremor-runtime/pull/10
 
 ** Add support for sending TLS encrypted data via TCP offramp **
 
-`tls` option added to offramp tls config contains either the tls config or boolean value indiacting the use of TLS session for transport level encryption. If false is provided then the default TCP stream will be used and if true is provided then TLS stream will be used with default certificates and domain same as hostname. Other option is to provide tls config with `domain` and `cafile`. In case of no domain, hostname will be used.
+`tls` option added to offramp tls config contains either the tls config or boolean value indiacting the use of TLS session for transport level encryption. If false is provided then the default TCP stream will be used and if true is provided then TLS stream will be used with default certificates and domain same as hostname. Other option is to provide tls config with `domain` and `cafile`. In case of `domain` not being specified, the hostname will be used.
 
 An example of TCP offramp config with TLS:
 
