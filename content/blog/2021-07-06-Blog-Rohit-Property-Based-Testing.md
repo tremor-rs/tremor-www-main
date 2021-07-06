@@ -1,3 +1,13 @@
++++
+date = "2021-07-06T17:25:00+01:00"
+title = "Rohit's Experience working with Tremor as a LFX Spring 2021 Mentee"
+tags = []
+categories = ["general"]
+draft = false
+description = "My acquaintance and learnings at Tremor"
+weight = -20210706
++++ 
+
 ### Introduction
 
 Hey, I am Rohit from India, about to complete my undergrad in CSE and will be working as a Software Engineer soon. I will be sharing my expereince at Tremor :)
@@ -14,9 +24,9 @@ My work involved writing "Property-based tests for tremor-script" and some of th
 
 - Erlang and Rust
     - My work mostly revolved around Erlang and a little Rust and I was completely new to this ecosystem, it didn't help to not find much resources or actively accessible community for Erlang.
-    - I took this as a challenge and went through [various resources to learn Erlang](https://github.com/diru1100/learn_erlang), functional programming in general and I was able to see why this Language was involved to do the task at handi, [my mentor](https://twitter.com/heinz_gies) is very passionate about Erlang and shared his thought-process, experience which helped me broaden my knowledge and how to approach any concept while learning something completely new.
+    - I took this as a challenge and went through [various resources to learn Erlang](https://github.com/diru1100/learn_erlang), functional programming in general and I was able to see why this Language was involved to do the task at hand, [my mentor](https://twitter.com/heinz_gies) is very passionate about Erlang and shared his thought-process, experience which helped me broaden my knowledge and how to approach any concept while learning something completely new.
 - Tremor-script
-    - It is an interpreted expression-oriented language designed for the filtering, extraction, transformation and streaming of structured data in a stream or event-based processing system which is explicitly turing incomplete used to easily write programs specific to Tremor which is written.
+    - It is an interpreted expression-oriented language designed for the filtering, extraction, transformation and streaming of structured data in a stream or event-based processing system which is explicitly turing incomplete used to easily write programs specific to Tremor use-cases.
     - It is written using Rust but tested using Erlang
 - Property based testing
     - We have seen various types of testing approaches like Unit testing, Integration testing, End2End testing etc.
@@ -27,17 +37,17 @@ My work involved writing "Property-based tests for tremor-script" and some of th
 
         Fig 1. Showing various tests wrt Feature compilance and Input scope covered [1]
 
-    - Property based testing takes a new appraoch which has the right balance of randomness and examples. They also have this nice feature of called shrinking which shows a simple version of sample input which is failing your tests. As in all PropTest is not an ideal solution to use everywhere but it fits our use-case here i.e testing features of a custom-language.
-    - Some of the resources I kept below may help understand PropTest better
+    - Property based testing takes a new appraoch which has the right balance of randomness and examples. They also have this nice feature of called shrinking which shows a simple version of sample input which is failing your tests. However, Property based testing is not an ideal solution to use everywhere but it fits our use-case here i.e testing features of a custom-language.
+    - Some of the resources I kept below may help understand Property based testing better
 
 ### Property Based testing in tremor-script
 
-- PropTest is implemented using [EQC](http://quviq.com/documentation/eqc/)
+- Property based testing is implemented using [EQC](http://quviq.com/documentation/eqc/)
 - Quickcheck is the original library written for Haskell to do property based testing ( similar to xUnit for unit-tests) and EQC is the Erlang version of it
-- Erlang quickcheck or EQC is thte version used here
+- Erlang quickcheck or EQC is the version used here
     - Implemented by QuviQ
-    - Free version is quickcheck mini
-- Used to do PropTest
+    - Free version is [quickcheck mini](http://www.quviq.com/downloads/)
+- Components in Property based test
     - Property is an abstraction of a test case
     - Properties are written in erlang in tremor
 - The files shown in Fig 2 make the [eqc part of Tremor](https://github.com/tremor-rs/tremor-runtime/tree/main/tremor-script/eqc)
@@ -50,20 +60,20 @@ My work involved writing "Property-based tests for tremor-script" and some of th
     - **model.erl:** Here, we run the model specification of each operation implemented in Erlang natively.
     - **pbt.erl:** Some supporting headers needed by other files
     - **spec.erl:** We make use of EQC functions here to create the input generators to test a feature.
-    - **test_eqc.erl:** The main property of the PropTest is kept here.
+    - **test_eqc.erl:** The main property of the property based test is kept here.
     - **util.erl:** Utility functions to support operations for easy handling.
 - On a high level Fig 3 explains how the property we consider is checked
 
 ![](/img/blog/LFC-blog-diru/tremor-script-testing-workflow.png)
 
-Fig 3. Highlevel overview of PropTest in termor-script
+Fig 3. Highlevel overview of Property based testing in termor-script
 
 ## Example thought process
 
-- Here, I will explain about property based testing by going through a step-by-step approach on how a PropTest is written for an operation in termor-script
+- Here, I will explain about property based testing by going through a step-by-step approach on how a Property based test is written for an operation in termor-script
 - [Patch](https://docs.tremor.rs/tremor-script/#patch) is a operation in tremor-script that is performed on Expressions(everthing in tremor-script is an expression :p ) which contains multiple record(data-type) level field operations to be applied to a target record in order to transform a targetted record.
 - As patch has multiple operations inside it which have to be seperately created in every step, here is where the concept of incremental implementation comes into picture, if one makes sures if the PatchOperation is implemented before, we can take advantage of that here. For example: Merge is a seperate operation on records but it also is one of the patch operation.
-- gen_script: The following code creates the structure needed for a patch operation as shown in Fig 4.
+- gen_script.erl: The following code creates the structure needed for a patch operation as shown in Fig 4.
 
     ![]/img/blog/LFC-blog-diru/patch-structure.png)
 
@@ -188,7 +198,7 @@ Fig 3. Highlevel overview of PropTest in termor-script
 
 All in all, I had/will have wonderful time at Tremor. Over the past 3-months I learned how to learn new tech-stack, got developer wisdom and understood what truely working as a team is. I want to thank Heinz, Matthias, Darach and Ana for making it fun, collaborative and inclusive environment. Although, I didn't had a lot of knowledge in this area before, I am now confident I have the right mindset to pickup new things and grow together with the team.
 
-I would like to continue contributing to the project and explore the rust part of it more. Apart from that I want to take more responsibilty,  engage with new-comers, be part of other CNCF community events are some of the things I want to do in the future.
+I would like to continue contributing to the project and explore the rust part of it more. Apart from that I want to take more responsibilty, engage with new-comers and be part of other CNCF community events.
 
 ---
 
