@@ -67,7 +67,7 @@ gets translated to:
 }
 ```
 
-Code for the syslog code can be found [here](https://github.com/tremor-rs/tremor-runtime/pull/856).
+Code for the syslog codec can be found [here](https://github.com/tremor-rs/tremor-runtime/pull/856).
 
 ### textual-length-prefix pre and postprocessor 
 
@@ -81,7 +81,7 @@ The implementation can be found [here](https://github.com/tremor-rs/tremor-runti
 
 Unlike UDP, Tremor did not support TLS over TCP onramp, which was needed to add. This work can be broadly divided into two parts:
 
-** Add support for receiving TLS encrypted data via TCP onramp **
+**Add support for receiving TLS encrypted data via TCP onramp**
 
 `tls` option was added to the tcp onramp configuration options which addresses the keys and certificate required for authentiction.
 
@@ -104,7 +104,7 @@ onramp:
 
 The code can be found [here](https://github.com/tremor-rs/tremor-runtime/pull/1055).
 
-** Add support for sending TLS encrypted data via TCP offramp **
+**Add support for sending TLS encrypted data via TCP offramp**
 
 `tls` option added to offramp tls config contains either the tls config or boolean value indiacting the use of TLS session for transport level encryption. If false is provided then the default TCP stream will be used and if true is provided then TLS stream will be used with default certificates and domain same as hostname. Other option is to provide tls config with `domain` and `cafile`. In case of `domain` not being specified, the hostname will be used.
 
