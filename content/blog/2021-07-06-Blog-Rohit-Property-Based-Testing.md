@@ -10,7 +10,7 @@ weight = -20210706
 
 ### Introduction
 
-Hey, I am Rohit from India, about to complete my undergrad in CSE and will be working as a Software Engineer soon. I will be sharing my expereince at Tremor :)
+Hey, I am [Rohit Dandamudi](https://www.linkedin.com/in/kurious-diru/) from India, about to complete my undergrad in CSE and will be working as a Software Engineer soon. I will be sharing my expereince at Tremor :)
 
 ### Main motivation for applying
 
@@ -68,7 +68,7 @@ My work involved writing "Property-based tests for tremor-script" and some of th
 
 Fig 3. Highlevel overview of Property based testing in termor-script
 
-## Example thought process
+### Example thought process
 
 - Here, I will explain about property based testing by going through a step-by-step approach on how a Property based test is written for an operation in termor-script
 - [Patch](https://docs.tremor.rs/tremor-script/#patch) is a operation in tremor-script that is performed on Expressions(everthing in tremor-script is an expression :p ) which contains multiple record(data-type) level field operations to be applied to a target record in order to transform a targetted record.
