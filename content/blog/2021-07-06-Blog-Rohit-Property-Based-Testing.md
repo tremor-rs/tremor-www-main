@@ -75,7 +75,7 @@ Fig 3. Highlevel overview of Property based testing in termor-script
 - As patch has multiple operations inside it which have to be seperately created in every step, here is where the concept of incremental implementation comes into picture, if one makes sures if the PatchOperation is implemented before, we can take advantage of that here. For example: Merge is a seperate operation on records but it also is one of the patch operation.
 - gen_script.erl: The following code creates the structure needed for a patch operation as shown in Fig 4.
 
-    ![]/img/blog/LFC-blog-diru/patch-structure.png)
+    ![](/img/blog/LFC-blog-diru/patch-structure.png)
 
     Fig 4. Diagram showing Patch operation [4]
 
