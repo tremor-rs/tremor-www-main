@@ -1,10 +1,10 @@
 +++
 date = "2021-07-06T17:25:00+01:00"
-title = "Rohit's Experience working with Tremor as a LFX Spring 2021 Mentee"
-tags = []
+title = "Property Based Testing of Tremor Script"
+tags = ["testing", "mentorship", "cncf", "tremorscript"]
 categories = ["general"]
 draft = false
-description = "My acquaintance and learnings at Tremor"
+description = "Rohit's Experience working with Tremor as a LFX Spring 2021 Mentee"
 weight = -20210706
 +++ 
 
