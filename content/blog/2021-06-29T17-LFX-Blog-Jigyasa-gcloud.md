@@ -1,10 +1,10 @@
 +++
 date = "2021-06-29T17:25:00+01:00"
-title = "Jigyasa's LFX spring Mentorship experience report"
-tags = []
+title = "Google Cloud Storage and Pub/Sub connectors"
+tags = ["connectors", "mentorship", "cncf", "gpc"]
 categories = ["general"]
 draft = false
-description = "Experience contributing to Tremor and work overview"
+description = "Jigyasa's LFX spring Mentorship experience report"
 weight = -20210629
 +++ 
 

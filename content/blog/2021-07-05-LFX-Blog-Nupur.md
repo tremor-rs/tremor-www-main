@@ -1,10 +1,10 @@
 +++
 date = "2021-07-05T11:04:54+00:00"
-title = "LFX Spring Mentorship Experience Report - Support for the Syslog Protocol"
-tags = []
+title = "Support for the Syslog Protocol"
+tags = ["codecs", "mentorship", "cncf"]
 categories = ["general"]
 draft = false
-description = "Experience contributing to Tremor and work overview"
+description = "Nupur's experience contributing to Tremor and work overview"
 weight = -20210705
 +++ 
 
