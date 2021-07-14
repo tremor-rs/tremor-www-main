@@ -1,9 +1,9 @@
-baseURL = "/"
-languageCode = "en-us"
-title = "Tremor"
-theme = "tremor"
-description = "Tremor is an early stage event processing system for unstructured data with rich support for structural pattern matching, filtering and transformation"
 Paginate = 6
+baseURL = "/"
+description = "Tremor is an early stage event processing system for unstructured data with rich support for structural pattern matching, filtering and transformation"
+languageCode = "en-us"
+theme = "tremor"
+title = "Tremor"
 
 # pygmentsUseClassic            = false
 # pygmentsCodeFences            = true
@@ -12,61 +12,61 @@ Paginate = 6
 # pygmentsStyle                 = "monokai"
 
 [Params]
-  RSSLink = "/index.xml"
-  author = "The Tremor Team" # add your company name
-  github = "tremor-rs" # add your github profile name
-  twitter = "TremorDEBS" # add your twitter profile
-  email = "#"
+RSSLink = "/index.xml"
+author = "The Tremor Team" # add your company name
+email = "#"
+github = "tremor-rs"       # add your github profile name
+twitter = "TremorDEBS"     # add your twitter profile
 
 [[menu.main]]
-    name = "Blog"
-    weight = 100
-    url = "/blog/"
+name = "Blog"
+url = "/blog/"
+weight = 100
 [[menu.main]]
-    name = "Faq"
-    weight = 200
-    url = "/faq/"
+name = "Faq"
+url = "/faq/"
+weight = 200
 [[menu.main]]
-    name = "Getting Started"
-    weight = 300
-    url = "/getting-started/"
+name = "Getting Started"
+url = "/getting-started/"
+weight = 300
 [[menu.main]]
-    name = "Docs"
-    weight = 400
-    url = "https://docs.tremor.rs/"
+name = "Docs"
+url = "https://docs.tremor.rs/"
+weight = 400
 [[menu.main]]
-    name = "RFCs"
-    weight = 500
-    url = "https://rfcs.tremor.rs/"
+name = "RFCs"
+url = "https://rfcs.tremor.rs/"
+weight = 500
 [[menu.main]]
-    name = "Community"
-    weight = 600
-    url = "/community/"
+name = "Community"
+url = "/community/"
+weight = 600
 [[menu.main]]
-    name = "Governance"
-    weight = 700
-    url = "/governance/"
+name = "Governance"
+url = "/governance/"
+weight = 700
 [[menu.main]]
-    name = "Community Chat"
-    weight = 900
-    url = "https://bit.ly/tremor-discord"
+name = "Community Chat"
+url = "https://chat.tremor.rs"
+weight = 900
 
 [[redirects]]
-  from = "/*"
-  to = "/404.html"
-  status = 404
+from = "/*"
+status = 404
+to = "/404.html"
 
 [markup.goldmark.renderer]
 unsafe = true
 
 [markup]
-  [markup.highlight]
-    codeFences = true
-    guessSyntax = false
-    hl_Lines = ""
-    lineNoStart = 1
-    lineNos = false
-    lineNumbersInTable = true
-    noClasses = false
-    style = "dracula"
-    tabWidth = 4
+[markup.highlight]
+codeFences = true
+guessSyntax = false
+hl_Lines = ""
+lineNoStart = 1
+lineNos = false
+lineNumbersInTable = true
+noClasses = false
+style = "dracula"
+tabWidth = 4
