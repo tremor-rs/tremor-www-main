@@ -1,0 +1,78 @@
+<!doctype html><html lang=en-us><head><meta name=generator content="Hugo 0.85.0"><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><title>Continuous Benchmarking in Tremor</title><meta name=description content="How we implemented a continuous benchmarking pipeline in Tremor"><meta name=author content="The Tremor Team"><meta property="og:title" content="Continuous Benchmarking in Tremor"><meta property="og:description" content="How we implemented a continuous benchmarking pipeline in Tremor"><meta property="og:type" content="article"><meta property="og:url" content="/blog/2021-07-14-continuous-benchmarking/"><meta property="article:section" content="blog"><meta property="article:published_time" content="2021-07-14T12:18:05+05:30"><meta property="article:modified_time" content="2021-07-14T12:18:05+05:30"><link rel=canonical href=/blog/2021-07-14-continuous-benchmarking/><link rel="shortcut icon" type=image/png href=/img/favicons/logo.png><link href=/css/font.css rel=stylesheet type=text/css><link href=/css/kube.css rel=stylesheet type=text/css><link href=/css/kube.legenda.css rel=stylesheet type=text/css><link href=/css/highlight.css rel=stylesheet type=text/css><link href=/css/master.css rel=stylesheet type=text/css><link href=/css/kube.demo.css rel=stylesheet type=text/css><link href=/css/custom.css rel=stylesheet type=text/css><link href=/css/syntax.css rel=stylesheet type=text/css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css><script src=/js/jquery-2.1.4.min.js type=text/javascript></script><script type=text/javascript src=/js/tocbot.min.js></script></head><body class=page-kube><header><div class=show-sm><div id=nav-toggle-box><div id=nav-toggle-brand><a href=/><img src=/logo-minimalism.png width=32 height=32 alt=Tremor></a></div><a data-component=toggleme data-target=#top href=# id=nav-toggle><i class=kube-menu></i></a></div></div><div class=hide-sm id=top><div id=top-brand><a href=/ title=home><img src=/img/common/logo.png height=64 width=285 alt=Tremor></a></div><nav id=top-nav-main><ul><li><a href=/blog/>Blog</a></li><li><a href=/faq/>Faq</a></li><li><a href=/getting-started/>Getting Started</a></li><li><a href=https://docs.tremor.rs/>Docs</a></li><li><a href=https://rfcs.tremor.rs/>RFCs</a></li><li><a href=/community/>Community</a></li><li><a href=/governance/>Governance</a></li><li><a href=https://chat.tremor.rs>Community Chat</a></li></ul></nav><nav id=top-nav-extra><ul></ul></nav></div><a class=github-fork-ribbon href=https://github.com/tremor-rs/tremor-runtime data-ribbon="Fork me on GitHub" title="Fork me on GitHub">Fork me on GitHub</a></header><main><div class=push-center itemscope itemtype=http://schema.org/BlogPosting><meta itemprop=name content="Continuous Benchmarking in Tremor"><meta itemprop=description content="How we implemented a continuous benchmarking pipeline in Tremor"><meta itemprop=datePublished content="2021-07-14T12:18:05+05:30"><meta itemprop=dateModified content="2021-07-14T12:18:05+05:30"><meta itemprop=wordCount content="1139"><meta itemprop=keywords content><div id=hero><h2 itemprop=headline>Continuous Benchmarking in Tremor</h2><blockquote itemprop=description>How we implemented a continuous benchmarking pipeline in Tremor</blockquote><time class=post-time><span class=icon><i class="fa fa-clock-o" aria-hidden=true></i></span>
+<span>6 minute read</span>
+<span class=icon><i class="fa fa-pencil" aria-hidden=true></i></span>
+Published: <time datetime=2021-07-14T12:18:05+05:30>14 Jul, 2021</time></time></div><div id=post-box><div id=post itemprop=articleBody><p>Hey I&rsquo;m Akshat. Recently I had the chance to implement a continuous benchmarking
+system for Tremor under the <a href=https://mentorship.lfx.linuxfoundation.org>LFX Mentorship</a>
+program.</p><h3 id=why>Why?</h3><p>So why do we need continuous benchmarking? Let&rsquo;s step back and ask what
+Tremor is and what problem is it trying to solve.</p><blockquote><p>Tremor is an event processing system originally designed for the needs of
+platform engineering and infrastructure. Tremor has been running in production
+since October 2018, processes 10 terabytes of data per day, or 10 billion
+messages per minute and 10 million metrics per second. Tremor achieves this
+with 10x footprint reduction in bare metal infrastructure and cloud based
+deployments in 6 ( and counting ) systems at Wayfair, whilst reducing memory
+usage by 10x and delivering better quality of service under conditions when
+our network is saturated at peak eCommerce trading lifecycles. As a secondary
+benefit, tremor is relatively low latency and relatively high throughput
+however this is an explicit non-goal of the project. Tremor is built for users
+that have a high message volume to deal with and want to build pipelines to
+process, route, or limit this event stream. <sup id=fnref:1><a href=#fn:1 class=footnote-ref role=doc-noteref>1</a></sup></p></blockquote><p>Tremor emerged at Wayfair because the existing data distribution tools weren’t
+performant enough for their needs. So for
+the kind of problem Tremor is trying to solve it makes sense to track its
+performance over time and try to make it better or at least prevent any major
+regressions.<sup id=fnref:2><a href=#fn:2 class=footnote-ref role=doc-noteref>2</a></sup></p><p>We already had a decent benchmarking system in place. There was already a
+<code>test</code> subcommand in the tremor cli which can be used to run the benchmarks.
+To run the whole benchmark suite run from the root of the tremor-runtime
+repository you can run</p><pre><code>tremor test bench tremor-cli/tests
+</code></pre><p>The benchmarking system we had before this was, well it was mostly Heinz. So
+the usual process was to submit a patch and if the patch affects the performance
+in some way Heinz pulls the changes, runs the benchmarks and if he gives it a
+green light then we’re good to go. So the goal was clear - replace Heinz.</p><p>Anyhoo, a continuous benchmarking system comprises of a few things</p><ul><li>Something to run your benchmarks</li><li>Someplace to store the data that is generated from those benchmarks</li><li>Something to view the stored benchmark data</li></ul><p>Let’s go through these one by one. We already had our benchmarks and know how
+to run them. We want our benchmark environment to be as consistent as possible
+since any change in the environment would directly impact the benchmarks and it
+won&rsquo;t be reliable. One way for it would be to run benchmarks on a bare metal
+instance specifically dedicated for benchmarking. CNCF was kind enough to
+provide us one where we could run our benchmarks and do our experiments. This
+was great for me as well since <code>cargo build</code>s wouldn&rsquo;t take a week now.</p><p>You <em>can</em> run your benchmarks on something like the VMs provided by
+GitHub Actions as well but doing that would be unreliable due to the
+<a href=https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors>noisy neighbour effect</a>. <sup id=fnref:3><a href=#fn:3 class=footnote-ref role=doc-noteref>3</a></sup></p><p>Secondly, we need someplace to store that benchmark data so that we can view
+how it changed over time. This can be a SQL database, a metrics oriented
+database or just a simple git repository. We store our benchmark data in a JSON
+file and push it to a git repository.</p><p>Finally, we use that JSON data to plot a time series graph to see how the
+performance changed over time.</p><h3 id=how-do-we-trigger-the-benchmark-run-and-why-github-actions-was-a-bad-idea>How do we trigger the benchmark run and why GitHub Actions was a bad idea?</h3><p>To trigger the benchmark runs we tried using the self hosted runner for GitHub
+Actions but that comes with a few problems of it&rsquo;s own. Anyone who can create a
+fork of the repo can modify the workflow file and run any arbitrary code on our
+machine. <sup id=fnref:4><a href=#fn:4 class=footnote-ref role=doc-noteref>4</a></sup></p><blockquote><p>We recommend that you only use self-hosted runners with private repositories.
+This is because forks of your repository can potentially run dangerous code on
+your self-hosted runner machine by creating a pull request that executes the
+code in a workflow. This is not an issue with GitHub-hosted runners because
+each GitHub-hosted runner is always a clean isolated virtual machine, and it
+is destroyed at the end of the job execution. Untrusted workflows running on
+your self-hosted runner pose significant security risks for your machine and
+network environment, especially if your machine persists its environment
+between jobs. Some of the risks include:</p><ul><li>Malicious programs running on the machine.</li><li>Escaping the machine&rsquo;s runner sandbox.</li><li>Exposing access to the machine&rsquo;s network environment.</li><li>Persisting unwanted or dangerous data on the machine. <sup id=fnref:5><a href=#fn:5 class=footnote-ref role=doc-noteref>5</a></sup></li></ul></blockquote><p>The day after we were discussing this GitHub announced
+<a href=https://github.blog/2021-04-22-github-actions-update-helping-maintainers-combat-bad-actors/>this</a>
+which meant that first-time contributors would now require a manual approval
+from maintainers before any Actions workflow can run which solves the problem
+but only partly. This solution assumes that someone has already committed to a
+repository they won’t go rogue which is a fair assumption to make since most
+spammers don&rsquo;t have any contributions to the project they are spamming to but
+still an assumption that can’t be guaranteed.</p><p>So in the end we went with a webhooks based solution with a workflow like this:</p><ul><li>A PR gets merged to the main branch or a bench label is added to the PR.</li><li>GitHub sends the payload to the webhooks server</li><li>The webhooks server starts a docker container, builds tremor and benchmarks it</li><li>It pushes the JSON data to the Git repository</li><li>And finally destroys the Docker container</li></ul><p>The end result looks something like this</p><p><img src=/img/LFX-blog-akshat/tremor-benchmark.png alt="Image for the Tremor Benchmark website"></p><p>A lot of this setup for the charts is inspired by the Continuous Benchmarks of
+<a href=https://deno.land/benchmarks>Deno</a>. We even use the same charting library.</p><h3 id=tremor-community>Tremor Community</h3><p>This was the first formal internship/mentorship I’ve ever done and I
+am grateful to be a part of it. I learned a lot in these past few months. A lot
+has changed in the way that I think not just about code or how to approach a
+problem but about work and life in general and I&rsquo;m grateful for that. Thanks
+Anup, Darach, Heinz and Matthias for being such awesome mentors. Thanks Ana for
+always being so helpful. Thanks to the other mentors who were a part of this
+program with me. It was a great time working with everyone and I look forward
+to some more.</p><p>If you have any suggestions/thoughts/questions or just wanna say hi you can
+message me on <a href=https://twitter.com/humancalico>Twitter</a> or email me at
+<a href=mailto:humancalico@disroot.org>humancalico@disroot.org</a></p><section class=footnotes role=doc-endnotes><hr><ol><li id=fn:1 role=doc-endnote><p>See <a href=https://docs.tremor.rs/>https://docs.tremor.rs/</a>&#160;<a href=#fnref:1 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:2 role=doc-endnote><p>This might not be true for every change since if there is a feature that is much needed and adding it causes a little regression. We&rsquo;ll probably choose adding that feature instead of rejecting it because of the regression.&#160;<a href=#fnref:2 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:3 role=doc-endnote><p>Technically you can still benchmarks on the CI by measuring a different metric. See <a href=https://pythonspeed.com/articles/consistent-benchmarking-in-ci/>benchmarking</a> in <a href=https://bheisler.github.io/post/benchmarking-in-the-cloud/>noisy</a> <a href=https://bheisler.github.io/post/criterion-rs-0-3-4/>environments</a>.&#160;<a href=#fnref:3 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:4 role=doc-endnote><p>See <a href=https://github.com/actions/runner/issues/494>github.com/actions/runner/issues/494</a>.&#160;<a href=#fnref:4 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:5 role=doc-endnote><p><a href=https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners#self-hosted-runner-security-with-public-repositories>Self-hosted runner security with public repositories</a>.&#160;<a href=#fnref:5 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li></ol></section></div><div><p>Published
+by <span itemprop=author>The Tremor Team</span>
+<time datetime=2021-07-14T12:18:05+05:30>14 Jul, 2021</time>
+using <span itemprop=wordCount>1139</span> words.</p></div></div></div></main><footer><footer id=footer><nav><ul><li><a href=https://docs.tremor.rs/CodeOfConduct/>Code of Conduct</a></li><li><a href=https://www.tremor.rs/>The Tremor Project</a></li><li><a href=/blog/>Blog</a></li><li><a href=https://twitter.com/TremorDEBS>@TremorDEBS</a></li><li><a href=https://www.cncf.io/><img src=/img/cncf-color.svg alt="CNCF Logo" style=width:100px></a></li></ul></nav><p>&copy; 2020 The Tremor Contributors. Content under ASL 2 License. Theme
+under MIT License.<br>Copyright The Linux Foundation. All rights reserved. The Linux Foundation
+has registered trademarks and uses trademarks. For a list of trademarks of
+The Linux Foundation, please see our
+<a href=https://www.linuxfoundation.org/trademark-usage/>Trademark Usage</a>
+page.<br>We are a
+<a href=https://www.cncf.io/sandbox-projects/>Cloud Native Computing Foundation sandbox project</a></p></footer></footer><script src=/js/kube.js type=text/javascript></script><script src=/js/kube.legenda.js type=text/javascript></script><script src=/js/master.js type=text/javascript></script></body></html>
